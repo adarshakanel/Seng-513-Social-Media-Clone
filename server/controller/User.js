@@ -3,7 +3,7 @@ const router = express.Router();
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
-const recordRoutes = express.Router();
+// const recordRoutes = express.Router();
 const User = require("../schema/User")
 // This will help us connect to the database
 // const dbo = require("../conn");
@@ -20,8 +20,20 @@ module.exports.postUser = async (req, res, next) => {
     })
 };
 
-router.post("/create", async (req, res, next) => {
-    this.postUser(req, res, next)
-})
+module.exports.getUser = async (req, res, next) => {
+    const { id } = req.params;
+    console.log(id)
+    const user = await User.findById(id)
+    if (user) res.status(200).send(user)
+    else res.status(400).send("user not found")
+};
 
-module.exports = router;
+// router.post("/create", async (req, res, next) => {
+//     this.postUser(req, res, next)
+// })
+
+// router.get("/:id", async (req, res, next) => {
+//     this.getUser(req, res, next)
+// })
+
+// module.exports = router;
