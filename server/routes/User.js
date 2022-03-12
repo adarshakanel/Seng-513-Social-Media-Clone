@@ -7,6 +7,11 @@ router.route("/")
         UserController.postUser(req, res, next)
     })
 
+router.route("/login")
+    .post(async (req, res, next) => {
+        UserController.userLogin(req, res, next)
+    })
+
 router.route("/:id")
     .get(async (req, res, next) => {
         UserController.getUser(req, res, next)
