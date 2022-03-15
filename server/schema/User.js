@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Post = require('./Post')
 
 const UserSchema = new Schema({
     email: {
@@ -16,7 +17,19 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    followers: {
+        type: [String],
+        default: () => { return null; }
+    },
+    following: {
+        type: [String],
+        default: () => { return null; }
+    },
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: "Post"
+    }]
 })
 
 module.exports = mongoose.model("User", UserSchema);
