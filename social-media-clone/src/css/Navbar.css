@@ -1,0 +1,36 @@
+.navbar {
+  position: fixed !important;
+  width: 100%;
+}
+
+.navBarContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding-right: 40px;
+  align-items: center;
+}
+
+.navbar {
+  padding: 0 !important;
+}
+
+.navLink {
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  /* font-size: 50px; */
+}
+
+.dropDown {
+  right: 0;
+  left: 85%;
+  max-width: 15%;
+}
+
+.navbarLogo {
+  font-size: 40px;
+  font-family: "Brush Script MT", "cursive";
+  margin-left: 40px;
+}

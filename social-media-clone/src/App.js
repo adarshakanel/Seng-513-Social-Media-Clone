@@ -10,8 +10,9 @@ function App() {
   return (
     <>
       <AppState>
-        <Navbar />
         <Router>
+          <Navbar />
+
           <AllRoutes />
         </Router>
       </AppState>

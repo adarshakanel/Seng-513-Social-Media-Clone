@@ -2,21 +2,25 @@ import React from 'react'
 import logo from '../Resources/camera.png'
 import { useState, useContext } from 'react'
 import AppContext from '../context/AppContext'
+import { useNavigate } from 'react-router-dom'
+
 export const Login = () => {
+    const navigate = useNavigate();
     const userLoginFormInfo = {
         username: "Username or Email",
         password: "Password"
     }
     const [userLoginInfo, setUserLoginInfo] = useState(userLoginFormInfo)
-    const { setIsLoggedIn, getUserInfo, setUserInfo } = useContext(AppContext)
+    const { isLoggedIn, getUserInfo, setUserInfo } = useContext(AppContext)
     const logIn = (e) => {
         e.preventDefault();
         console.log(userLoginInfo)
         // will call api
         const success = true
         if (success) {
-            setIsLoggedIn(true);
+            isLoggedIn(true);
             setUserInfo({ ...getUserInfo })
+            navigate('/', { replace: false })
         }
     }
     return (
