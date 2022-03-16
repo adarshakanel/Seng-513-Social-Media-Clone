@@ -47,3 +47,14 @@ module.exports.deletePosts = async (req, res, next) => {
         res.status(400).send("information incorrect")
     }
 }
+
+module.exports.likePost = async (req, res, next) => {
+    const { id } = req.params
+    const postId = req.body.id
+    if (id && postId) {
+        await Post.findByIdAndUpdate({ "_id": postId }, { $addToSet: { likedBy: id } })
+        res.status(200).send("post has been liked")
+    } else {
+        res.status(400).send("information incorrect")
+    }
+}

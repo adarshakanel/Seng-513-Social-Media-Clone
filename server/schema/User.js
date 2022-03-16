@@ -19,11 +19,17 @@ const UserSchema = new Schema({
         unique: true
     },
     followers: {
-        type: [String],
+        type: [{
+            type: Schema.Types.ObjectId,
+            red: "User"
+        }],
         default: () => { return null; }
     },
     following: {
-        type: [String],
+        type: [{
+            type: Schema.Types.ObjectId,
+            red: "User"
+        }],
         default: () => { return null; }
     },
     posts: [{

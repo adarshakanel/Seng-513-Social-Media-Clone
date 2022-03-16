@@ -39,6 +39,8 @@ module.exports.postUser = async (req, res, next) => {
 module.exports.getUser = async (req, res, next) => {
     const { id } = req.params;
     const user = await User.findById(id)
+        .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
+
     if (user) res.status(200).send(user)
     else res.status(400).send("user not found")
 };
@@ -48,6 +50,7 @@ module.exports.getUserIDFromEmail = async (req, res, next) => {
     if (email) {
         const findUser = await User.find({ email })
         const user = await User.findById(findUser[0]._id)
+        // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
         res.status(200).send(user)
     } else res.status(400).send("user not found")
     // the url sent back is that of the image

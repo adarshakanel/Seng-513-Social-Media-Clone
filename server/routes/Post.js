@@ -12,5 +12,8 @@ router.route('/:id')
     .delete(async (req, res, next) => {
         PostController.deletePosts(req, res, next)
     })
+    .put(async (req, res, next) => {
+        PostController.likePost(req, res, next)
+    })
 
 module.exports = router;

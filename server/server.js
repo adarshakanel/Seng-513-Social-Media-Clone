@@ -4,12 +4,18 @@ const cors = require("cors");
 const mongoose = require("mongoose")
 const userRoutes = require("./routes/User")
 const postRoutes = require('./routes/Post')
+const commentRoutes = require('./routes/Comment')
+
 require("dotenv").config({ path: "./config.env" });
+
 const port = process.env.PORT || 5000;
+
 app.use(cors());
 app.use(express.json());
+
 app.use("/user", userRoutes);
 app.use("/post", postRoutes);
+app.use("/comment", commentRoutes);
 
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
