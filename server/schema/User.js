@@ -29,7 +29,10 @@ const UserSchema = new Schema({
     posts: [{
         type: Schema.Types.ObjectId,
         ref: "Post"
-    }]
+    }],
+    pfp: {
+        type: String,
+    }
 })
 
 module.exports = mongoose.model("User", UserSchema);

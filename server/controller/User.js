@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../schema/User")
+
 const cloudinary = require('cloudinary').v2;
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -23,9 +24,6 @@ module.exports.uploadToColudinary = (fileAddress) => {
     }
 }
 
-// This help convert the id from string to ObjectId for the _id.
-const ObjectId = require("mongodb").ObjectId;
-
 module.exports.postUser = async (req, res, next) => {
     const { email, username, password } = req.body;
     // bcrypt the password
@@ -36,31 +34,59 @@ module.exports.postUser = async (req, res, next) => {
             res.status(200).send(user)
         })
     });
-
 };
 
 module.exports.getUser = async (req, res, next) => {
     const { id } = req.params;
-    console.log(id)
     const user = await User.findById(id)
     if (user) res.status(200).send(user)
     else res.status(400).send("user not found")
+};
+
+module.exports.getUserIDFromEmail = async (req, res, next) => {
+    const { email } = req.body;
+    if (email) {
+        const findUser = await User.find({ email })
+        const user = await User.findById(findUser[0]._id)
+        res.status(200).send(user)
+    } else res.status(400).send("user not found")
     // the url sent back is that of the image
     // this.uploadToColudinary("./tree-736885__480.webp")
 };
 
 module.exports.userLogin = async (req, res, next) => {
-    const { email, username, password } = req.body;
-    if (email || username) {
-        const user = email ? await User.find({ email }) : await User.find({ username })
-
+    const { email, password } = req.body;
+    if (email) {
+        const user = await User.find({ email })
         if (user.length !== 0) {
             bcrypt.compare(password, user[0].password, function (err, result) {
                 if (result) res.status(200).send(user[0].username)
-                else res.status(400).send("username or password incorrect")
             });
         } else {
             res.status(400).send("username or password incorrect")
         }
+    }
+};
+
+module.exports.addPFP = async (req, res, next) => {
+    const { id, pfp } = req.body;
+    // console.log(id)
+    if (id && pfp) {
+        await User.findByIdAndUpdate({ "_id": id }, { pfp: pfp })
+        res.status(200).send("pfp has been updated")
+    } else {
+        res.status(400).send("incorrect info")
+    }
+};
+
+module.exports.followUser = async (req, res, next) => {
+    const followId = req.params.id;
+    const yourId = req.body.id;
+    if (yourId && followId) {
+        await User.findByIdAndUpdate(yourId, { $push: { following: followId } })
+        await User.findByIdAndUpdate(followId, { $push: { follower: yourId } })
+        res.status(200).send("user followed")
+    } else {
+        res.status(400).send("incorrect info")
     }
 };
