@@ -20,7 +20,7 @@ export const Login = () => {
         if (success) {
             isLoggedIn(true);
             setUserInfo({ ...getUserInfo })
-            navigate('/', { replace: false })
+            navigate('/user/', { replace: false })
         }
     }
     return (
