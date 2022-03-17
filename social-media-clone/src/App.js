@@ -12,11 +12,9 @@ function App() {
       <AppState>
         <Router>
           <Navbar />
-
           <AllRoutes />
         </Router>
       </AppState>
-
     </>
   );
 }
