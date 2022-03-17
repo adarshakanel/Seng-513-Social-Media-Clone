@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import SearchIcon from '@material-ui/icons/Search';
 import AppContext from '../context/AppContext';
 import "bootstrap"
 export const Navbar = () => {
@@ -27,6 +29,16 @@ export const Navbar = () => {
                         loggedIn ?
                             <div className="navBarContainer">
                                 <div className="navbar-nav">
+                                    <div className="input-group rounded">
+                                        <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                        <span className="input-group-text border-0" id="search-addon">
+                                            <SearchIcon></SearchIcon>
+                                            {/* <i className="fas fa-search"></i> */}
+                                        </span>
+                                    </div>
+                                    <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
+                                        <AddBoxIcon className='navLink'></AddBoxIcon>
+                                    </div>
                                     <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
                                         <HomeIcon className='navLink'></HomeIcon>
                                     </div>
