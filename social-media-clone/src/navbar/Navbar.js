@@ -34,7 +34,7 @@ export const Navbars = () => {
                     </button>
                     {
                         loggedIn ?
-                            <div className="navBarContainer">
+                            <div className="navBarContainer ">
                                 <div className="navbar-nav">
                                     <div className="input-group rounded">
                                         <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />

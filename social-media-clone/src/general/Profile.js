@@ -9,7 +9,7 @@ export const Profile = () => {
         <>
             <div className="container">
                 <div className="profileContainer">
-                    <Card style={{ width: '18rem' }} className="cardContainer" >
+                    <Card style={{ width: '18rem' }} className="cardContainer shadow-lg p-3 mb-5 bg-white rounded" >
                         <Card.Img src={require("../images/paris.jpg")} alt="" className="PostPfp" />
                         <Card.Body className='descContainer' >
                             <Card.Title>
