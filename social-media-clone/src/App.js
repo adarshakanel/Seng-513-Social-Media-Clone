@@ -1,9 +1,7 @@
 import './css/App.css';
-import './css/SignUp.css';
-import './css/Login.css';
 import AllRoutes from './Routes/Route';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Navbar } from './navbar/Navbar';
+import { Navbars } from './navbar/Navbar';
 import AppState from './context/AppState';
 
 function App() {
@@ -11,7 +9,7 @@ function App() {
     <>
       <AppState>
         <Router>
-          <Navbar />
+          <Navbars />
           <AllRoutes />
         </Router>
       </AppState>

@@ -5,6 +5,7 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import AuthRoute from "./AuthRoute";
 import Home from "../general/Home";
+import { Profile } from "../general/Profile";
 function AllRoutes() {
     const { loggedIn } = useContext(AppContext)
     console.log(loggedIn)
@@ -12,12 +13,14 @@ function AllRoutes() {
     return (
         <>
             <Routes>
-                <Route path={"/login"} exact element={<Login />} />
+                <Route path={"/"} exact element={<Login />} />
                 <Route path={"/signup"} exact element={<SignUp />} />
                 <Route path={"/user/*"} exact
                     element={<AuthRoute loggedIn={loggedIn}>
                         <Routes>
                             <Route path={`/`} exact element={<Home />} />
+                            <Route path={`/:name`} exact element={<Profile />} />
+                            <Route path={`/chat`} exact element={<Profile />} />
                         </Routes>
                     </AuthRoute>}>
                 </Route>

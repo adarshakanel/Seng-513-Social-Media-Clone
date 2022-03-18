@@ -3,6 +3,7 @@ import logo from '../Resources/camera.png'
 import { useState, useContext } from 'react'
 import AppContext from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
+import '../css/Login.css';
 
 export const Login = () => {
     const navigate = useNavigate();

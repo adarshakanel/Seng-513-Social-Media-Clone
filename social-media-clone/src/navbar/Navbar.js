@@ -8,14 +8,21 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
 import AppContext from '../context/AppContext';
 import "bootstrap"
-export const Navbar = () => {
+import { Navbar, NavDropdown } from 'react-bootstrap'
+export const Navbars = () => {
     const navigate = useNavigate();
-    const { loggedIn } = useContext(AppContext)
+    const { loggedIn, isLoggedIn } = useContext(AppContext)
 
     const navbarClicked = (e, path) => {
         // navigate(path)
         e.preventDefault()
-        navigate(path, { replace: true })
+        navigate(`/user${path}`, { replace: true })
+    }
+    const logOff = (e) => {
+        // navigate(path)
+        e.preventDefault()
+        isLoggedIn(loggedIn => !loggedIn)
+        navigate(`/`, { replace: true })
     }
     return (
         <>
@@ -32,8 +39,7 @@ export const Navbar = () => {
                                     <div className="input-group rounded">
                                         <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                         <span className="input-group-text border-0" id="search-addon">
-                                            <SearchIcon></SearchIcon>
-                                            {/* <i className="fas fa-search"></i> */}
+                                            <SearchIcon onClick={(e) => navbarClicked(e, "/id")} ></SearchIcon >
                                         </span>
                                     </div>
                                     <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
@@ -42,15 +48,23 @@ export const Navbar = () => {
                                     <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
                                         <HomeIcon className='navLink'></HomeIcon>
                                     </div>
+
                                     <div className="nav-link active navLink" href="#">
                                         <QuestionAnswerIcon className='navLink' />
                                     </div>
-                                    <div className="nav-link navLink" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <NavDropdown title="PFP" id="basic-nav-dropdown">
+                                        <NavDropdown.Item><div className="dropdown-item" onClick={(e) => { navbarClicked(e, "/id") }}>Profile</div></NavDropdown.Item>
+                                        <NavDropdown.Item><div className="dropdown-item" onClick={(e) => { logOff(e) }}>Logout</div></NavDropdown.Item>
+                                        {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+                                    </NavDropdown>
+                                    {/* <div className="nav-link navLink" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div className="navLink">PFP</div>
                                     </div>
                                     <ul className="dropdown-menu dropDown" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a className="dropdown-item" onClick={(e) => { navbarClicked(e, "/login") }}>Logout</a></li>
-                                    </ul>
+
+                                    </ul> */}
                                 </div>
                             </div>
                             :

@@ -1,9 +1,8 @@
 import React from 'react'
 import logo from '../Resources/camera.png'
+import '../css/SignUp.css';
+
 export const SignUp = () => {
-
-
-
     return (
         <div className="background-div">
             <div className='popup signup-content'>
