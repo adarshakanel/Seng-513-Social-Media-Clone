@@ -49,3 +49,20 @@
   padding-left: 10%;
   padding-right: 10%;
 }
+
+.navBarImg {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#basic-nav-dropdown {
+  /* width: 400px !important;
+  height: 40px !important; */
+  padding-top: 5px;
+}
+
+.input-group-text {
+  cursor: pointer;
+}

@@ -52,19 +52,16 @@ export const Navbars = () => {
                                     <div className="nav-link active navLink" href="#">
                                         <QuestionAnswerIcon className='navLink' />
                                     </div>
-                                    <NavDropdown title="PFP" id="basic-nav-dropdown">
-                                        <NavDropdown.Item><div className="dropdown-item" onClick={(e) => { navbarClicked(e, "/id") }}>Profile</div></NavDropdown.Item>
-                                        <NavDropdown.Item><div className="dropdown-item" onClick={(e) => { logOff(e) }}>Logout</div></NavDropdown.Item>
-                                        {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                    <NavDropdown
+                                        title={
+                                            <img src={require("../images/paris.jpg")} className='navBarImg' />
+                                        }
+                                        id="basic-nav-dropdown"
+                                    >
+                                        <NavDropdown.Item onClick={(e) => { navbarClicked(e, "/id") }}>Profile</NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+                                        <NavDropdown.Item onClick={(e) => { logOff(e) }}>Logout</NavDropdown.Item>
                                     </NavDropdown>
-                                    {/* <div className="nav-link navLink" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <div className="navLink">PFP</div>
-                                    </div>
-                                    <ul className="dropdown-menu dropDown" aria-labelledby="navbarDropdownMenuLink">
-
-                                    </ul> */}
                                 </div>
                             </div>
                             :
