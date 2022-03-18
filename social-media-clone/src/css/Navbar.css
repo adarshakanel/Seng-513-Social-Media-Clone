@@ -67,3 +67,67 @@
 .input-group-text {
   cursor: pointer;
 }
+
+.modal {
+  width: 100%;
+}
+
+.modal-dialog {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.modal-content {
+  height: 60vh !important;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.Header {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-body {
+  height: 100% !important;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ModBody {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.insertPhoto {
+  width: 40% !important;
+  height: 40% !important;
+  color: grey;
+}
+
+.dropText {
+  font-weight: 200;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-button {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}

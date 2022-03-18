@@ -4,14 +4,15 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
 import AppContext from '../context/AppContext';
 import "bootstrap"
-import { Navbar, NavDropdown } from 'react-bootstrap'
+import { NavDropdown } from 'react-bootstrap'
+import { MakePost } from '../general/MakePost';
 export const Navbars = () => {
     const navigate = useNavigate();
     const { loggedIn, isLoggedIn } = useContext(AppContext)
+
 
     const navbarClicked = (e, path) => {
         // navigate(path)
@@ -42,8 +43,8 @@ export const Navbars = () => {
                                             <SearchIcon onClick={(e) => navbarClicked(e, "/id")} ></SearchIcon >
                                         </span>
                                     </div>
-                                    <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
-                                        <AddBoxIcon className='navLink'></AddBoxIcon>
+                                    <div className="nav-link active navLink" aria-current="page">
+                                        <MakePost></MakePost>
                                     </div>
                                     <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
                                         <HomeIcon className='navLink'></HomeIcon>
@@ -54,7 +55,7 @@ export const Navbars = () => {
                                     </div>
                                     <NavDropdown
                                         title={
-                                            <img src={require("../images/paris.jpg")} className='navBarImg' />
+                                            <img src={require("../images/paris.jpg")} className='navBarImg' alt='profile' />
                                         }
                                         id="basic-nav-dropdown"
                                     >
