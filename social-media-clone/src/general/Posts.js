@@ -20,7 +20,7 @@ export const Posts = () => {
                     
                 </Card.Body>
                 <Card.Footer>
-                    <div ref={btn} id='likeButton' className='unliked' onDoubleClick={()=>{
+                    <div ref={btn} id='likeButton' className='unliked' onClick={()=>{
                         if(btn.current.classList.contains("liked")) {
                             btn.current.classList.remove('liked');
                             btn.current.classList.add('unliked');
