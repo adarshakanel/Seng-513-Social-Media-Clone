@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import {Card} from 'react-bootstrap'
 import './../css/Posts.css'
-import placeholderImg from './placeholder-img.jpg'
+import postImg from './paris.jpg'
 
 export const Posts = () => {
     const btn = useRef(null);
@@ -15,11 +15,9 @@ export const Posts = () => {
                 </Card.Header>
                 <Card.Body>
                     <div className='post-picture'>
-                        <img src=''></img>    
+                        <img src={postImg}></img>    
                     </div>
-                    <div className='post-text'>
-                        <p>This is my first post!!</p>    
-                    </div>
+                    
                 </Card.Body>
                 <Card.Footer>
                     <div ref={btn} id='likeButton' className='unliked' onDoubleClick={()=>{
@@ -38,6 +36,10 @@ export const Posts = () => {
                             <button>Send</button>
                         </form>
                     </div>
+                    <div className='post-text'>
+                        <p><strong>username </strong>This is my first post!!</p>    
+                    </div>
+                    <p className='view-comments'>View all 5 comments</p>
                 </Card.Footer>                
                 
             </Card>
