@@ -1,3 +1,19 @@
+
+.homepage-div{
+    scroll-behavior: auto;
+    height: 100%;
+}
+
+.posts{
+    margin-top: 5rem;
+    list-style-type: none;
+    padding: 0;
+}
+
+.posts li{
+    margin-bottom: 1rem;
+}
+
 #Home{
     display: flex;
     padding: 15vh 0%;
