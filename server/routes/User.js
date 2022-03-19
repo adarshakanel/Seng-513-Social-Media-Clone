@@ -22,6 +22,9 @@ router.route("/:id")
     .put(async (req, res, next) => {
         UserController.followUser(req, res, next)
     })
+    .delete(async (req, res, next) => {
+        UserController.unFollowUser(req, res, next)
+    })
 
 router.route("/findId")
     .post(async (req, res, next) => {
