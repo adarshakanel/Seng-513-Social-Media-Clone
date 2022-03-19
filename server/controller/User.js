@@ -93,3 +93,15 @@ module.exports.followUser = async (req, res, next) => {
         res.status(400).send("incorrect info")
     }
 };
+
+module.exports.unFollowUser = async (req, res, next) => {
+    const followId = req.params.id;
+    const yourId = req.body.id;
+    if (yourId && followId) {
+        await User.findByIdAndUpdate(yourId, { $pull: { following: followId } })
+        await User.findByIdAndUpdate(followId, { $pull: { follower: yourId } })
+        res.status(200).send("user unfollowed")
+    } else {
+        res.status(400).send("incorrect info")
+    }
+};

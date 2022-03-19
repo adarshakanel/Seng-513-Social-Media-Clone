@@ -1,5 +1,6 @@
 import React from 'react'
-import "../css/Home.css"
+import Posts from './Posts'
+import './../css/Home.css'
 
 export const Home = () => {
     return (
@@ -62,7 +63,6 @@ export const Home = () => {
                 <li>Post3</li>
             </ul>
         </div>
-    )
-}
+    )}
 
 export default Home;

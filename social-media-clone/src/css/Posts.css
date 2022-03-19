@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+#Post-Section{
+    height: 100%;
+    width: 70%;
+    margin-left: 20%;
+    margin-right: auto;
+    
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+ 
+.profile-picture {
+    display: flex;
+    float: left;
+    margin-right: 2%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+        
+}
+
+.post-picture > img {
+    max-width: 100%;
+    height: auto;
+}
+
+#likeButton{
+    display: flex;
+    float:left;
+    margin-right: 2%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.liked{
+    color: red;
+    display:inline-block;
+    width: 200px; 
+    aspect-ratio: 1;
+    border-image: radial-gradient(red 69%,#0000 70%) 84.5% fill/100%;
+    clip-path: polygon(-41% 0,50% 91%, 141% 0);
+    width: 30px;
+}
+
+.unliked{
+    color: black;
+    display:inline-block;
+    width: 200px; 
+    aspect-ratio: 1;
+    border-image: radial-gradient(black 69%,#0000 70%) 84.5% fill/100%;
+    clip-path: polygon(-41% 0,50% 91%, 141% 0);
+    width: 30px;
+}
+
+.comment-section {
+    display: flex;
+}
+
+.commentForm {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.commentForm > button{
+    border-radius: 3rem;
+
+}
+
+.commentInput {
+    border-radius: 3rem;
+    width: 100%;
+}

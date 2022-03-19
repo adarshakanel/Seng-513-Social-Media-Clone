@@ -1,3 +1,4 @@
+
 .homepage-div{
     scroll-behavior: auto;
     height: 100%;
@@ -13,3 +14,9 @@
     margin-bottom: 1rem;
 }
 
+#Home{
+    display: flex;
+    padding: 15vh 0%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
