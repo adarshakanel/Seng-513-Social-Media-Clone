@@ -1,9 +1,12 @@
 import React from 'react'
-import "../css/Home.css"
+import Posts from './Posts'
+import './../css/Home.css'
 
 export const Home = () => {
     return (
-        <div>Home</div>
+        <div id='Home'>
+            <Posts />
+        </div>
     )
 }
 
