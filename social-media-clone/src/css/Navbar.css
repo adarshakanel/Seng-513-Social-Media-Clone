@@ -1,6 +1,7 @@
 .navbar {
   position: fixed !important;
   width: 100%;
+  z-index: 100;
   /* border-bottom: 0.05px inset rgb(182, 177, 177); */
 }
 

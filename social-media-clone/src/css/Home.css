@@ -1,22 +1,23 @@
-
-.homepage-div{
-    scroll-behavior: auto;
-    height: 100%;
+.homepage-div {
+  scroll-behavior: auto;
+  height: 100%;
 }
 
-.posts{
-    margin-top: 5rem;
-    list-style-type: none;
-    padding: 0;
+.posts {
+  margin-top: 5rem;
+  list-style-type: none;
+  padding: 0;
+  width: 40%;
 }
 
-.posts li{
-    margin-bottom: 1rem;
+.posts li {
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-#Home{
-    display: flex;
-    padding: 15vh 0%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+#Home {
+  display: flex;
+  padding: 15vh 0%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
