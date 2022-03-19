@@ -8,7 +8,7 @@ export const Posts = () => {
 
     return (
         <div id = 'Post-Section'>
-            <Card style={{ width: '100%' }}>
+            <Card style={{ maxWidth: '100%', maxHeight: 'auto', width: 'max-content', height: 'auto' }}>
                 <Card.Header>
                     <div className='profile-picture'>PFP</div>
                     <div className='username'>username</div>
@@ -39,7 +39,7 @@ export const Posts = () => {
                     <div className='post-text'>
                         <p><strong>username </strong>This is my first post!!</p>    
                     </div>
-                    <p className='view-comments'>View all 5 comments</p>
+                    <small className='view-comments'>View all 5 comments</small>
                 </Card.Footer>                
                 
             </Card>
