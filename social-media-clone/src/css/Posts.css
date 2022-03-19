@@ -12,13 +12,7 @@
     
 }
 
-
-
-.header {
-    position: flex;
-    cursor: pointer;
-}
-
+ 
 .profile-picture {
     display: flex;
     float: left;
@@ -27,12 +21,6 @@
     margin-top: 0;
     margin-bottom: 0;
         
-}
-
-.post-picture {
-    position: relative;
-    width: 100%;
-    height: auto;
 }
 
 .post-picture > img {
