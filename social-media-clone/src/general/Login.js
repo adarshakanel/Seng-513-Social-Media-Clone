@@ -15,7 +15,6 @@ export const Login = () => {
     const { isLoggedIn, getUserInfo, setUserInfo } = useContext(AppContext)
     const logIn = (e) => {
         e.preventDefault();
-        console.log(userLoginInfo)
         // will call api
         const success = true
         if (success) {
@@ -23,6 +22,10 @@ export const Login = () => {
             setUserInfo({ ...getUserInfo })
             navigate('/user/', { replace: false })
         }
+    }
+    const reroute = (e, path) => {
+        e.preventDefault();
+        navigate(`/${path}`, { replace: false })
     }
     return (
         <div className="background-div">
@@ -38,8 +41,16 @@ export const Login = () => {
                     <button className='submit-btn' onClick={(e) => logIn(e)}>Log In</button>
                 </form>
                 <div className='offer-login-signup'>
-                    <p>Don't have an account? <a href='#'>Sign up</a></p><br />
-                    <p><a href='#'>Forgot password?</a></p>
+                    <p>Don't have an account? <div onClick={(e) => reroute(e, "signup")}>
+                        <a href="">
+                            Sign up
+                        </a>
+                    </div></p><br />
+                    <p>
+                        <div onClick={(e) => reroute(e, "forgot")}>
+                            <a href=''>Forgot password?</a>
+                        </div>
+                    </p>
                 </div>
             </div>
         </div >

@@ -35,6 +35,7 @@
   font-size: 40px;
   font-family: "Brush Script MT", "cursive";
   margin-left: 40px;
+  cursor: pointer;
 }
 
 .navbar-nav {

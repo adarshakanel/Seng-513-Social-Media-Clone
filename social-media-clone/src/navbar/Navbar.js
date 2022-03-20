@@ -15,10 +15,10 @@ export const Navbars = () => {
 
 
     const navbarClicked = (e, path) => {
-        // navigate(path)
         e.preventDefault()
         navigate(`/user${path}`, { replace: true })
     }
+
     const logOff = (e) => {
         // navigate(path)
         e.preventDefault()
@@ -29,7 +29,7 @@ export const Navbars = () => {
         <>
             <nav className="navbar navbar-expand navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand navbarLogo" href="#">InstaChat</a>
+                    <div className="navbar-brand navbarLogo" onClick={(e) => navbarClicked(e, "/")}>InstaChat</div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

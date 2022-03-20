@@ -7,6 +7,7 @@ import AuthRoute from "./AuthRoute";
 import Home from "../general/Home";
 import Chat from "../general/Chat";
 import { Profile } from "../general/Profile";
+import { ForgotPassword } from "../general/ForgotPassword";
 function AllRoutes() {
     const { loggedIn } = useContext(AppContext)
     console.log(loggedIn)
@@ -16,6 +17,8 @@ function AllRoutes() {
             <Routes>
                 <Route path={"/"} exact element={<Login />} />
                 <Route path={"/signup"} exact element={<SignUp />} />
+                <Route path={"/forgot"} exact element={<ForgotPassword />} />
+
                 <Route path={"/user/*"} exact
                     element={<AuthRoute loggedIn={loggedIn}>
                         <Routes>

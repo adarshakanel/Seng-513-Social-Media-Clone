@@ -1,8 +1,15 @@
 import React from 'react'
 import logo from '../Resources/camera.png'
 import '../css/SignUp.css';
+import { useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
+    const navigate = useNavigate();
+
+    function gotoLogin(e) {
+        e.preventDefault()
+        navigate('/login', { replace: true })
+    }
     return (
         <div className="background-div">
             <div className='popup signup-content'>
@@ -21,10 +28,14 @@ export const SignUp = () => {
                     <button className='submit-btn'>Sign Up</button>
                 </form>
                 <div className='offer-login-signup'>
-                    <p>Have an account? <a href='#' >Log in</a></p>
+                    <p>Have an account?
+                        <div onClick={(e) => { gotoLogin(e) }}>
+                            <a href='' >Log in</a>
+                        </div>
+                    </p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
