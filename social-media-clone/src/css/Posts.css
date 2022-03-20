@@ -1,74 +1,126 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-#Post-Section {
-  height: 100%;
-  width: 70%;
-  margin-left: 20%;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-  font-family: "Montserrat", sans-serif;
+#Post-Section{
+    height: 100%;
+    width: 70%;
+    margin-left: 20%;
+    margin-right: auto;
+    
+    display: flex;
+    justify-content: center;
+    /* font-family: 'Montserrat', sans-serif; */
+    
 }
 
+.card{
+  min-width: 394.5px;
+}
+ 
 .profile-picture {
-  display: flex;
-  float: left;
-  margin-right: 2%;
-  margin-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+    display: flex;
+    float: left;
+    margin-right: 2%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 30px;
+    width: 30px;
+        
 }
 
 .post-picture > img {
-  max-width: 100%;
-  height: auto;
-  /* background-size: contain; */
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
-#likeButton {
-  display: flex;
-  float: left;
-  margin-right: 2%;
-  margin-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+#likeButton{
+  color: white;
+    display: flex;
+    float:left;
+    margin-right: 2%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+
 }
 
-.liked {
-  color: red;
-  display: inline-block;
-  width: 200px;
-  aspect-ratio: 1;
-  border-image: radial-gradient(red 69%, #0000 70%) 84.5% fill/100%;
-  clip-path: polygon(-41% 0, 50% 91%, 141% 0);
-  width: 30px;
+.liked{
+  width: 24px; /* pathのサイズ */
+	height: 24px; /* pathのサイズ */
+	background: #FF5252; /* 色 */
+	clip-path: path("M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z");
+	transform: scale(1);
 }
 
-.unliked {
-  color: black;
-  display: inline-block;
-  width: 200px;
-  aspect-ratio: 1;
-  border-image: radial-gradient(black 69%, #0000 70%) 84.5% fill/100%;
-  clip-path: polygon(-41% 0, 50% 91%, 141% 0);
-  width: 30px;
+.unliked{
+  width: 24px; /* pathのサイズ */
+	height: 24px; /* pathのサイズ */
+	background: grey; /* 色 */
+	clip-path:path("M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z");
+	transform: scale(1);
 }
 
 .comment-section {
-  display: flex;
+    display: flex;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
 }
 
 .commentForm {
-  display: flex;
-  width: 100%;
-  height: 100%;
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
 
-.commentForm > button {
-  border-radius: 3rem;
+.commentForm > button{
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-weight: 500;
 }
 
 .commentInput {
-  border-radius: 3rem;
-  width: 100%;
+    border-radius: 14px;
+    width: 100%;
+    height: 2.3em;
+    padding-left: 0.8em;
+    padding-top: 0.08em;
+    padding-bottom: 0.08em;
+    margin-right: 0.7em;
+    border: 1px solid #b6b6b6;
+    font-size: 0.9em;
+}
+
+.commentInput:focus{
+  outline-color: #b6b6b6;
+  outline-width: thin;
+}
+
+.card-header, .card-footer{
+  background-color: white;
+}
+
+.footer-username{
+  font-weight: 500;
+  padding-left: 0.2em;
+}
+
+p.first-comment{
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+}
+
+.view-comments{
+  font-size: 0.9em;
+  color: #6e6e6e;
+  padding-left: 0.3em;
+}
+
+.likebtn-desc-post-container{
+  display: flex;
+  margin-top: 0.7em;
+  justify-content: space-between;
+  height: 2em;
 }
