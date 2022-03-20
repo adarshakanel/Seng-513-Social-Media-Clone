@@ -42,24 +42,29 @@
     margin-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+    cursor: pointer;
+    transform: perspective(100px) translateZ(0px);
+    transition: transform 100ms linear;
+    transition: all 0.15s;
+}
 
-
+#likeButton:hover{
+  transform: perspective(100px) translateZ(10px);
 }
 
 .liked{
-  width: 24px; /* pathのサイズ */
-	height: 24px; /* pathのサイズ */
-	background: #FF5252; /* 色 */
+  width: 24px; 
+	height: 24px; 
+	background: #FF5252; 
 	clip-path: path("M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z");
-	transform: scale(1);
+ 
 }
 
 .unliked{
-  width: 24px; /* pathのサイズ */
-	height: 24px; /* pathのサイズ */
-	background: grey; /* 色 */
+  width: 24px; 
+	height: 24px; 
+	background: grey; 
 	clip-path:path("M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z");
-	transform: scale(1);
 }
 
 .comment-section {
