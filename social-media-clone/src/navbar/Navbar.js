@@ -43,26 +43,30 @@ export const Navbars = () => {
                                             <SearchIcon onClick={(e) => navbarClicked(e, "/id")} ></SearchIcon >
                                         </span>
                                     </div>
-                                    <div className="nav-link active navLink" aria-current="page">
-                                        <MakePost></MakePost>
-                                    </div>
-                                    <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
-                                        <HomeIcon className='navLink'></HomeIcon>
+
+                                    <div className='navbar-components'>
+                                        <div className="nav-link active navLink" aria-current="page">
+                                            <MakePost></MakePost>
+                                        </div>
+                                        <div className="nav-link active navLink" aria-current="page" onClick={(e) => { navbarClicked(e, "/") }}>
+                                            <HomeIcon className='navLink'></HomeIcon>
+                                        </div>
+
+                                        <div className="nav-link active navLink" onClick={(e) => { navbarClicked(e, "/chat") }}>
+                                            <QuestionAnswerIcon className='navLink' />
+                                        </div>
+                                        <NavDropdown
+                                            title={
+                                                <img src={require("../images/paris.jpg")} className='navBarImg' alt='profile' />
+                                            }
+                                            id="basic-nav-dropdown"
+                                        >
+                                            <NavDropdown.Item onClick={(e) => { navbarClicked(e, "/id") }}>Profile</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item onClick={(e) => { logOff(e) }}>Logout</NavDropdown.Item>
+                                        </NavDropdown>
                                     </div>
 
-                                    <div className="nav-link active navLink" onClick={(e) => { navbarClicked(e, "/chat") }}>
-                                        <QuestionAnswerIcon className='navLink' />
-                                    </div>
-                                    <NavDropdown
-                                        title={
-                                            <img src={require("../images/paris.jpg")} className='navBarImg' alt='profile' />
-                                        }
-                                        id="basic-nav-dropdown"
-                                    >
-                                        <NavDropdown.Item onClick={(e) => { navbarClicked(e, "/id") }}>Profile</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item onClick={(e) => { logOff(e) }}>Logout</NavDropdown.Item>
-                                    </NavDropdown>
                                 </div>
                             </div>
                             :

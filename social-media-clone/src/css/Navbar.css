@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-left: 20%;
+  padding-left: 5%;
   align-items: center;
 }
 
@@ -132,4 +132,27 @@
 .modal-button {
   padding-left: 30px !important;
   padding-right: 30px !important;
+}
+
+/* .input-group.rounded{
+  width: 16rem;
+  display: flex;
+} */
+
+/* .form-control.rounded{
+  width: 4rem;
+  justify-self: flex-start;
+} */
+
+#search-addon{
+  margin-left: 0.5em;
+  height: 2.5em;
+}
+.navbar-components{
+  display: flex;
+  margin-left: 11em;
+}
+
+.dropdown-toggle.nav-link{
+  width: 4em;
 }
