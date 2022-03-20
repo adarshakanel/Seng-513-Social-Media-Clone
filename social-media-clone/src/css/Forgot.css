@@ -5,27 +5,27 @@
   align-items: center;
 }
 
-.card-title {
+.forgotContainer .card-title {
   display: flex;
   justify-content: center;
 }
 
-.cardButton {
+.forgotContainer .cardButton {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.cardInput {
+.forgotContainer .cardInput {
   width: 100%;
 }
 
-.card {
+.forgotContainer .card {
   max-width: 20rem;
   width: 25%;
   min-width: 18rem;
 }
 
-.card-body {
+.forgotContainer .card-body {
   padding: 25px !important;
 }

@@ -46,7 +46,6 @@ export const ForgotPassword = () => {
                         </div>
                         <div className="cardButton">
                             <Button variant="primary" >Reset password</Button>
-
                         </div>
                     </Card.Body>
                 </Card>
