@@ -35,7 +35,12 @@ export const Profile = () => {
                 }
             ));
     }, [])
-    console.log(person)
+
+    function messageButtonClicked(e) {
+        e.preventDefault()
+        navigate(`/user/chat/${person.id}`, { replace: true })
+    }
+    // console.log(person)
     return (
         <>
             <div className="container">
@@ -48,7 +53,7 @@ export const Profile = () => {
                                     <div className="usernameText">
                                         {person.username}
                                     </div>
-                                    <Button variant="outline-primary">
+                                    <Button variant="outline-primary" onClick={e => messageButtonClicked(e)} >
                                         Message
                                     </Button>
                                     {
