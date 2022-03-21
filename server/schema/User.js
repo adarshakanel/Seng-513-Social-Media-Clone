@@ -21,16 +21,16 @@ const UserSchema = new Schema({
     followers: {
         type: [{
             type: Schema.Types.ObjectId,
-            red: "User"
+            ref: "User"
         }],
-        default: () => { return null; }
+        default: () => { return []; }
     },
     following: {
         type: [{
             type: Schema.Types.ObjectId,
-            red: "User"
+            ref: "User"
         }],
-        default: () => { return null; }
+        default: () => { return []; }
     },
     posts: [{
         type: Schema.Types.ObjectId,

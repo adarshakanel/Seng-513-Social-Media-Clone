@@ -144,15 +144,19 @@
   justify-self: flex-start;
 } */
 
-#search-addon{
+#search-addon {
   margin-left: 0.5em;
   height: 2.5em;
 }
-.navbar-components{
+.navbar-components {
   display: flex;
   margin-left: 11em;
 }
 
-.dropdown-toggle.nav-link{
+.dropdown-toggle.nav-link {
   width: 4em;
+}
+
+.inputGroup {
+  width: 80% !important;
 }

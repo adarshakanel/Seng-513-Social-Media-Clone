@@ -28,7 +28,7 @@ router.route("/:id")
 
 router.route("/findId")
     .post(async (req, res, next) => {
-        UserController.getUserIDFromEmail(req, res, next)
+        UserController.getUserIDFromUsername(req, res, next)
     })
 
 module.exports = router;

@@ -10,7 +10,7 @@ import { Profile } from "../general/Profile";
 import { ForgotPassword } from "../general/ForgotPassword";
 function AllRoutes() {
     const { loggedIn } = useContext(AppContext)
-    console.log(loggedIn)
+    // console.log(loggedIn)
 
     return (
         <>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext, useState } from 'react';
 import "../css/Navbar.css"
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, InputGroup, FormControl } from 'react-bootstrap'
 // import CloseIcon from '@material-ui/icons/Close';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate'; export const MakePost = () => {
     const [show, setShow] = useState(false);
@@ -23,7 +23,13 @@ import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate'; export
                         <AddPhotoAlternateIcon className='insertPhoto' />
                         <div className="dropText">Drag Image/Video here ...</div>
                     </div>
-
+                    <div className="mb-3 inputGroup">
+                        <FormControl
+                            placeholder="Add a description..."
+                            aria-label="Add a description..."
+                            aria-describedby="basic-addon1"
+                        />
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     {/* <Button variant="secondary" onClick={handleClose}>

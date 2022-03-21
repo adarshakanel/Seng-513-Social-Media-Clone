@@ -6,7 +6,7 @@ import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
 const AuthRoute = ({ children, loggedIn, ...rest }) => {
     const navigate = useNavigate();
-    console.log("helo")
+    // console.log("helo")
     return <>
         {
             loggedIn ? children : <Login />

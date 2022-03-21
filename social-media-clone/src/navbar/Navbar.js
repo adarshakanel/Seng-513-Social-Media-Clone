@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/Navbar.css'
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
@@ -12,11 +12,30 @@ import { MakePost } from '../general/MakePost';
 export const Navbars = () => {
     const navigate = useNavigate();
     const { loggedIn, isLoggedIn } = useContext(AppContext)
-
+    const [searchVal, setSearchVal] = useState('')
+    let url = 'http://localhost:5000/user/'
 
     const navbarClicked = (e, path) => {
         e.preventDefault()
         navigate(`/user${path}`, { replace: true })
+    }
+
+    const NavbarSearchClicked = (e, path) => {
+        e.preventDefault()
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: path })
+        };
+        fetch(url + `findId`, requestOptions)
+            .then(response =>
+                response.ok ?
+                    response.json() : null
+            )
+            .then(data => {
+                navigate(`user/${data._id}`,
+                    { replace: false })
+            })
     }
 
     const logOff = (e) => {
@@ -38,9 +57,10 @@ export const Navbars = () => {
                             <div className="navBarContainer ">
                                 <div className="navbar-nav">
                                     <div className="input-group rounded">
-                                        <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                        <input type="search" className="form-control rounded" value={searchVal} onChange={e => setSearchVal(e.target.value)}
+                                            placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                         <span className="input-group-text border-0" id="search-addon">
-                                            <SearchIcon onClick={(e) => navbarClicked(e, "/id")} ></SearchIcon >
+                                            <SearchIcon onClick={(e) => NavbarSearchClicked(e, `${searchVal}`)} ></SearchIcon >
                                         </span>
                                     </div>
 

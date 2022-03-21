@@ -37,22 +37,32 @@ module.exports.postUser = async (req, res, next) => {
 };
 
 module.exports.getUser = async (req, res, next) => {
-    const { id } = req.params;
-    const user = await User.findById(id)
-        .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id)
+            .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
 
-    if (user) res.status(200).send(user)
-    else res.status(400).send("user not found")
+        if (user) res.status(200).send(user)
+        else res.status(400).send("user not found")
+    } catch (err) {
+        res.status(500).send(err)
+    }
+
 };
 
-module.exports.getUserIDFromEmail = async (req, res, next) => {
-    const { email } = req.body;
-    if (email) {
-        const findUser = await User.find({ email })
-        const user = await User.findById(findUser[0]._id)
-        // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
-        res.status(200).send(user)
-    } else res.status(400).send("user not found")
+module.exports.getUserIDFromUsername = async (req, res, next) => {
+    try {
+        const { username } = req.body;
+        if (username) {
+            const findUser = await User.find({ username })
+            const user = await User.findById(findUser[0]._id)
+            // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
+            res.status(200).send(user)
+        } else res.status(400).send("user not found")
+    } catch (err) {
+        res.status(500).send(err)
+    }
+
     // the url sent back is that of the image
     // this.uploadToColudinary("./tree-736885__480.webp")
 };
