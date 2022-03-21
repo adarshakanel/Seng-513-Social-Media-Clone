@@ -9,6 +9,7 @@ const AppState = (props) => {
         userId: "0",
         pfp: "a picture",
     }
+    let url = 'http://localhost:5000/user/'
 
     const [loggedIn, isLoggedIn] = useState(false)
     const [userInfo, setUserInfo] = useState(userInformation)
@@ -16,7 +17,8 @@ const AppState = (props) => {
         <AppContext.Provider
             value={{
                 loggedIn, isLoggedIn,
-                userInfo, setUserInfo
+                userInfo, setUserInfo,
+                url
             }}
         >
             {props.children}

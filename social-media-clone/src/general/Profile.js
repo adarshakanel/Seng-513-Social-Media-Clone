@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import "../css/Profile.css"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useParams, useNavigate } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 
 export const Profile = () => {
     const navigate = useNavigate();
-
-    let url = 'http://localhost:5000/user/'
+    const { url } = useContext(AppContext)
+    // let url = 'http://localhost:5000/user/'
     // let us = '622fffa2d143a743cf2b6362'
     const [followed, setIsFollowed] = useState('false')
     const personMock = {
@@ -22,12 +23,7 @@ export const Profile = () => {
     const { name } = useParams()
     useEffect(() => {
         fetch(url + name)
-            .then(response =>
-                response.ok ?
-                    response.json()
-                    :
-                    navigate(`/user`, { replace: true })
-            )
+            .then(response => response.json())
             .then(data => setPerson(
                 {
                     ...person,

@@ -11,9 +11,9 @@ import { NavDropdown } from 'react-bootstrap'
 import { MakePost } from '../general/MakePost';
 export const Navbars = () => {
     const navigate = useNavigate();
-    const { loggedIn, isLoggedIn } = useContext(AppContext)
+    const { loggedIn, isLoggedIn, url } = useContext(AppContext)
     const [searchVal, setSearchVal] = useState('')
-    let url = 'http://localhost:5000/user/'
+    // let url = 'http://localhost:5000/user/'
 
     const navbarClicked = (e, path) => {
         e.preventDefault()
@@ -39,7 +39,6 @@ export const Navbars = () => {
     }
 
     const logOff = (e) => {
-        // navigate(path)
         e.preventDefault()
         isLoggedIn(loggedIn => !loggedIn)
         navigate(`/`, { replace: true })
@@ -58,6 +57,7 @@ export const Navbars = () => {
                                 <div className="navbar-nav">
                                     <div className="input-group rounded">
                                         <input type="search" className="form-control rounded" value={searchVal} onChange={e => setSearchVal(e.target.value)}
+                                            onKeyPress={(e) => e.key === 'Enter' ? NavbarSearchClicked(e, `${searchVal}`) : null}
                                             placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                         <span className="input-group-text border-0" id="search-addon">
                                             <SearchIcon onClick={(e) => NavbarSearchClicked(e, `${searchVal}`)} ></SearchIcon >
