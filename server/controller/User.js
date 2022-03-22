@@ -53,11 +53,15 @@ module.exports.getUser = async (req, res, next) => {
 module.exports.getUserIDFromUsername = async (req, res, next) => {
     try {
         const { username } = req.body;
+        // console.log(username)
         if (username) {
             const findUser = await User.find({ username })
-            const user = await User.findById(findUser[0]._id)
-            // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
-            res.status(200).send(user)
+            if (findUser !== []) {
+                const user = await User.findById(findUser[0]._id)
+                // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
+                res.status(200).send(user)
+            }
+
         } else res.status(400).send("user not found")
     } catch (err) {
         res.status(500).send(err)
@@ -93,25 +97,50 @@ module.exports.addPFP = async (req, res, next) => {
 };
 
 module.exports.followUser = async (req, res, next) => {
-    const followId = req.params.id;
-    const yourId = req.body.id;
-    if (yourId && followId) {
-        await User.findByIdAndUpdate(yourId, { $push: { following: followId } })
-        await User.findByIdAndUpdate(followId, { $push: { follower: yourId } })
-        res.status(200).send("user followed")
-    } else {
-        res.status(400).send("incorrect info")
+    try {
+        const followId = req.params.id;
+        const yourId = req.body.id;
+        // console.log(followId, yourId)
+        if (yourId && followId) {
+            await User.findByIdAndUpdate(yourId, { $push: { following: followId } })
+            await User.findByIdAndUpdate(followId, { $push: { followers: yourId } })
+            res.status(200).send("user followed")
+        } else {
+            res.status(400).send("incorrect info")
+        }
+    } catch (err) {
+        res.status(500).send(err)
     }
+
 };
 
 module.exports.unFollowUser = async (req, res, next) => {
-    const followId = req.params.id;
-    const yourId = req.body.id;
-    if (yourId && followId) {
-        await User.findByIdAndUpdate(yourId, { $pull: { following: followId } })
-        await User.findByIdAndUpdate(followId, { $pull: { follower: yourId } })
-        res.status(200).send("user unfollowed")
-    } else {
-        res.status(400).send("incorrect info")
+    try {
+        const followId = req.params.id;
+        const yourId = req.body.id;
+        if (yourId && followId) {
+            await User.findByIdAndUpdate(yourId, { $pull: { following: followId } })
+            await User.findByIdAndUpdate(followId, { $pull: { followers: yourId } })
+            res.status(200).send("user unfollowed")
+        } else {
+            res.status(400).send("incorrect info")
+        }
+    } catch (err) {
+        res.status(500).send(err)
     }
 };
+
+module.exports.changePassword = async (req, res, next) => {
+    try {
+        const { username, password } = req.body
+        await bcrypt.hash(password, saltRounds, async function (err, hash) {
+            const user = await User.find({ username })
+            if (user !== []) {
+                await User.findByIdAndUpdate({ "_id": user[0]._id }, { password: hash })
+                res.status(200).send("password has been updated")
+            }
+        });
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}

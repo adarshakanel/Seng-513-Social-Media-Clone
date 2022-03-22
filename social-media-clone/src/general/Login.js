@@ -19,7 +19,7 @@ export const Login = () => {
         const success = true
         if (success) {
             isLoggedIn(true);
-            setUserInfo({ ...getUserInfo })
+            // setUserInfo({ ...getUserInfo, ...userLoginInfo })
             navigate('/user/', { replace: false })
         }
     }
@@ -34,9 +34,11 @@ export const Login = () => {
                 <form className='sign-up-login-form'>
                     <div className='form-fields'>
                         <input type="text" placeholder={userLoginInfo.username}
-                            onChange={change => setUserLoginInfo({ ...userLoginInfo, username: change })} className='form-field'></input>
+                            className='form-field'></input>
+                        {/* onChange={change => setUserLoginInfo({ ...userLoginInfo, username: change })} className='form-field'></input> */}
                         <input type="password" placeholder={userLoginInfo.password}
-                            onChange={change => setUserLoginInfo({ ...userLoginInfo, password: change })} className='form-field'></input>
+                            className='form-field'></input>
+                        {/* onChange={change => setUserLoginInfo({ ...userLoginInfo, password: change })} className='form-field'></input> */}
                     </div>
                     <button className='submit-btn' onClick={(e) => logIn(e)}>Log In</button>
                 </form>

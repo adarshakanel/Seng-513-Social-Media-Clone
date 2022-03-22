@@ -6,7 +6,7 @@ const AppState = (props) => {
     // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const userInformation = {
         fullName: "John Doe",
-        userId: "0",
+        userId: '62389d0ee792273ebecf1551',
         pfp: "a picture",
     }
     let url = 'http://localhost:5000/user/'

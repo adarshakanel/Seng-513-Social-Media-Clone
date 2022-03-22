@@ -29,3 +29,10 @@
 .forgotContainer .card-body {
   padding: 25px !important;
 }
+
+.passwordChange {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  color: brown;
+}

@@ -11,10 +11,10 @@ import { NavDropdown } from 'react-bootstrap'
 import { MakePost } from '../general/MakePost';
 export const Navbars = () => {
     const navigate = useNavigate();
-    const { loggedIn, isLoggedIn, url } = useContext(AppContext)
+    const { loggedIn, isLoggedIn, url, userInfo } = useContext(AppContext)
     const [searchVal, setSearchVal] = useState('')
     // let url = 'http://localhost:5000/user/'
-
+    // console.log(userInfo)
     const navbarClicked = (e, path) => {
         e.preventDefault()
         navigate(`/user${path}`, { replace: true })
@@ -81,7 +81,7 @@ export const Navbars = () => {
                                             }
                                             id="basic-nav-dropdown"
                                         >
-                                            <NavDropdown.Item onClick={(e) => { navbarClicked(e, "/id") }}>Profile</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={(e) => { navbarClicked(e, `/${userInfo.userId}`) }}>Profile</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item onClick={(e) => { logOff(e) }}>Logout</NavDropdown.Item>
                                         </NavDropdown>
