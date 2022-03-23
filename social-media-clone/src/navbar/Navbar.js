@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/Navbar.css'
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';

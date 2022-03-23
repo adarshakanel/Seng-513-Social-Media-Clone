@@ -17,7 +17,11 @@ const PostSchema = new Schema({
         ref: "User",
         unique: true,
         dropDups: true
-    }]
+    }],
+    date: {
+        type: String,
+        required: true
+    }
 })
 
 module.exports = mongoose.model("Post", PostSchema);
