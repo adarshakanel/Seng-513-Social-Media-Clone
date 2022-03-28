@@ -9,7 +9,7 @@ export const Login = () => {
     const navigate = useNavigate();
     const email = useRef();
     const password = useRef();
-    const url = "http://localhost:5000/user/login"
+    const { url } = useContext(AppContext)
     const userLoginFormInfo = {
         username: "Username or Email",
         password: "Password"
@@ -20,7 +20,7 @@ export const Login = () => {
         e.preventDefault();
         // will call api
         const success = false;
-        fetch(url,
+        fetch(url + 'login',
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
