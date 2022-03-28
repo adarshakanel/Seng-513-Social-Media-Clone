@@ -13,7 +13,7 @@ export const SignUp = () => {
         password: ''
     }
 
-    const { url } = useContext(AppContext)
+    const url = "http://localhost:5000/user/"
     const [formValues, setFormValues] = useState(formVal)
     const email = useRef();
     const fullname = useRef();
@@ -32,7 +32,7 @@ export const SignUp = () => {
     function createUser(e) {
         let formVals = { email: email.current.value, fullName: fullname.current.value, username: username.current.value, password: password.current.value };
         e.preventDefault()
-        fetch(url + 'signup', {
+        fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formVals)
