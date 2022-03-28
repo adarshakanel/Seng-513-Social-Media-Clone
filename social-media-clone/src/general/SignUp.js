@@ -30,7 +30,7 @@ export const SignUp = () => {
     }
 
     function createUser(e) {
-        let formVals = { email: email.current.value, fullName: fullname.current.value, username: username.current.value, password: password.current.value };
+        let formVals = { email: email.current.value, username: username.current.value, password: password.current.value };
         e.preventDefault()
         fetch(url, {
             method: 'POST',

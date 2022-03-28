@@ -9,7 +9,7 @@ export const Login = () => {
     const navigate = useNavigate();
     const email = useRef();
     const password = useRef();
-    const { url } = useContext(AppContext)
+    const url = "http://localhost:5000/user/login"
     const userLoginFormInfo = {
         username: "Username or Email",
         password: "Password"
