@@ -3,10 +3,14 @@
 import React from 'react'
 import { useContext, useState } from 'react';
 import "../css/Navbar.css"
+import "../css/MakePost.css"
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Button, Modal, FormControl } from 'react-bootstrap'
 import AppContext from '../context/AppContext';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
+import {useDropzone} from "react-dropzone"
+import Dropzone from "../Dropzone/Dropzone"
+
 export const MakePost = () => {
     const [show, setShow] = useState(false);
     const { url, userInfo } = useContext(AppContext)
@@ -14,7 +18,10 @@ export const MakePost = () => {
     // https://medium.com/geekculture/how-to-upload-images-to-cloudinary-with-a-react-app-f0dcc357999c
     // fetch to this url to post image
     const cloudianryUrl = `https://api.cloudinary.com/v1_1/dmieyzfqg/upload`
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        
+    }
     const handleShow = () => setShow(true);
 
     const formVal = {
@@ -52,22 +59,26 @@ export const MakePost = () => {
                     {/* <CloseIcon className='closeIcon' onClick={handleClose}></CloseIcon> */}
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="ModBody">
-                        <AddPhotoAlternateIcon className='insertPhoto' />
-                        <div className="dropText">Drag Image/Video here ...</div>
+                    <div>
+                        <div className='post-component'>
+                            <div>                        
+                                <div className='drag-drop-content'>
+                                    {/**https://blog.logrocket.com/build-drag-and-drop-component-react-dropzone-html-drag-and-drop-api/ */}
+                                    <Dropzone />
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <div className="mb-3 inputGroup">
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="inputGroup">
                         <FormControl
                             placeholder="Add a description..."
                             aria-label="Add a description..."
                             aria-describedby="basic-addon1"
                         />
                     </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    {/* <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button> */}
                     <Button variant="primary" className='modal-button' onClick={handleClose}>
                         Post
                     </Button>
