@@ -31,6 +31,9 @@ export const Login = () => {
             isLoggedIn(true);
             // setUserInfo({ ...getUserInfo, ...userLoginInfo })
             navigate('/user/', { replace: false })
+            setUserInfo({
+                /* */
+            })
         }
     }
     const reroute = (e, path) => {
