@@ -15,7 +15,7 @@ const PostSchema = new Schema({
     likedBy: [{
         type: Schema.Types.ObjectId,
         ref: "User",
-        unique: true,
+        // unique: true,
         dropDups: true
     }],
     date: {

@@ -30,6 +30,11 @@ router.route("/:id")
         UserController.unFollowUser(req, res, next)
     })
 
+router.route("/following/:id")
+    .get(async (req, res, next) => {
+        UserController.getFollowing(req, res, next)
+    })
+
 router.route("/findId")
     .post(async (req, res, next) => {
         UserController.getUserIDFromUsername(req, res, next)

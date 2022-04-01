@@ -47,7 +47,19 @@ module.exports.getUser = async (req, res, next) => {
     } catch (err) {
         res.status(500).send(err)
     }
+};
 
+module.exports.getFollowing = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id)
+            .populate({ path: "following", populate: { path: "posts", populate: "comments" } })
+
+        if (user) res.status(200).send(user)
+        else res.status(400).send("user not found")
+    } catch (err) {
+        res.status(500).send(err)
+    }
 };
 
 module.exports.getUserIDFromUsername = async (req, res, next) => {
