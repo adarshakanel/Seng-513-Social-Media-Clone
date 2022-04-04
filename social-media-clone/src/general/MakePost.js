@@ -1,24 +1,29 @@
 // require("dotenv").config({ path: "../../../server/config.env" });
 
 import React from 'react'
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import "../css/Navbar.css"
 import "../css/MakePost.css"
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Button, Modal, FormControl } from 'react-bootstrap'
 import AppContext from '../context/AppContext';
-import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
-import {useDropzone} from "react-dropzone"
 import Dropzone from "../Dropzone/Dropzone"
+
 
 export const MakePost = () => {
     const [show, setShow] = useState(false);
     const { url, userInfo } = useContext(AppContext)
+    const [fileUrl, setFileUrl] = useState('');
+    
+
+    const fileFromDrop = (fileData) => {
+        setFileUrl(fileData);
+    }
 
     // https://medium.com/geekculture/how-to-upload-images-to-cloudinary-with-a-react-app-f0dcc357999c
     // fetch to this url to post image
-    const cloudianryUrl = `https://api.cloudinary.com/v1_1/dmieyzfqg/upload`
-    const handleClose = () => {
+    const handleClose = () => {  
+        dropRef.current.uploadFile();
         setShow(false);
         
     }
@@ -49,10 +54,11 @@ export const MakePost = () => {
 
     }
 
+    const dropRef = useRef();
+
     return (
         <>
             <AddBoxIcon className='navLink' onClick={handleShow}></AddBoxIcon>
-
             <Modal className='modal' show={show} onHide={handleClose} animation={false}>
                 <Modal.Header className='Header' >
                     <Modal.Title>Create a Post</Modal.Title>
@@ -63,11 +69,12 @@ export const MakePost = () => {
                         <div className='post-component'>
                             <div>                        
                                 <div className='drag-drop-content'>
-                                    {/**https://blog.logrocket.com/build-drag-and-drop-component-react-dropzone-html-drag-and-drop-api/ */}
-                                    <Dropzone />
-                                </div>
+                                    {/*
+                                    * https://blog.logrocket.com/build-drag-and-drop-component-react-dropzone-html-drag-and-drop-api/ 
+                                    */}
+                                    <Dropzone props={fileFromDrop} ref={dropRef}/>
+                                </div> 
                             </div>
-                            
                         </div>
                     </div>
                 </Modal.Body>
@@ -79,9 +86,11 @@ export const MakePost = () => {
                             aria-describedby="basic-addon1"
                         />
                     </div>
+                    
                     <Button variant="primary" className='modal-button' onClick={handleClose}>
                         Post
                     </Button>
+                   
                 </Modal.Footer>
             </Modal>
         </>
