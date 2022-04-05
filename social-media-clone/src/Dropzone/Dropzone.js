@@ -83,7 +83,7 @@ const Dropzone = ({props}, ref) => {
     const handlePost = () => {
         var d = new FormData();
         
-        d.append('upload_preset', 'preset');
+        d.append('upload_preset', 'default-preset');
         d.append('file', selectedFiles[0]);
         d.append('cloud_name', 'dmieyzfqg');
         fetch(`https://api.cloudinary.com/v1_1/dmieyzfqg/image/upload`,{
