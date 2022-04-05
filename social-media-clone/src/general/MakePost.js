@@ -13,17 +13,18 @@ import Dropzone from "../Dropzone/Dropzone"
 export const MakePost = () => {
     const [show, setShow] = useState(false);
     const { url, userInfo } = useContext(AppContext)
-    const [fileUrl, setFileUrl] = useState('');
+    const [file, setFile] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
     
 
     const fileFromDrop = (fileData) => {
-        setFileUrl(fileData);
+        setFile(fileData);
     }
 
     // https://medium.com/geekculture/how-to-upload-images-to-cloudinary-with-a-react-app-f0dcc357999c
     // fetch to this url to post image
     const handleClose = () => {  
-        dropRef.current.uploadFile();
+        handlePost();
         setShow(false);
         
     }
@@ -55,6 +56,26 @@ export const MakePost = () => {
     }
 
     const dropRef = useRef();
+
+    
+
+    const handlePost = () => {
+        var d = new FormData();
+        
+        d.append('upload_preset', 'default-preset');
+        d.append('file', file);
+        console.log(file);
+        d.append('cloud_name', 'dmieyzfqg');
+        fetch(`https://api.cloudinary.com/v1_1/dmieyzfqg/image/upload`,{
+            method: "POST",
+            body: d
+        })
+        .then(response => response.json())
+        .then(data => {
+            setImageUrl(data.url);
+        })
+        .catch(err => console.log(err));
+    }
 
     return (
         <>
