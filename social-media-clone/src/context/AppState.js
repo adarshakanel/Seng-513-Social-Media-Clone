@@ -10,6 +10,7 @@ const AppState = (props) => {
         pfp: "a picture",
     }
     let url = 'http://localhost:5000/user/'
+    let postUrl = 'http://localhost:5000/post/'
 
     const [loggedIn, isLoggedIn] = useState(false)
     const [userInfo, setUserInfo] = useState(userInformation)
@@ -18,7 +19,7 @@ const AppState = (props) => {
             value={{
                 loggedIn, isLoggedIn,
                 userInfo, setUserInfo,
-                url
+                url, postUrl
             }}
         >
             {props.children}

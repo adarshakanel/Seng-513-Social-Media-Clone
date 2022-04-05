@@ -4,10 +4,11 @@ const User = require("../schema/User")
 require('dotenv').config();
 
 module.exports.makePost = async (req, res, next) => {
-    const { image, comments } = req.body
-    if (image) {
+    const { image, description, date } = req.body
+    console.log(image, date)
+    if (image && date) {
         const { id } = req.params
-        const post = new Post({ image, comments })
+        const post = new Post({ image, description, date })
         await post.save(async function (err, user) {
             if (err) { return next(err) }
             else {
