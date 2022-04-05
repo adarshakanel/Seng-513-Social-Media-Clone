@@ -5,13 +5,6 @@ import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 
 const Dropzone = ({props}, ref) => {
 
-    useImperativeHandle(ref, () => ({
-        uploadFile() {
-            handlePost();
-            props(fileUrl);
-        }
-    }), [])
-
     const [selectedFiles, setSelectedFiles] = useState([]);
 
     const removeFile = () => {
@@ -32,6 +25,8 @@ const Dropzone = ({props}, ref) => {
             if (validateFile(files[i])) {
                 // add to an array so we can display the name of file
                 setSelectedFiles(prevArray => [...prevArray, files[i]]);
+                
+                props(files[i]);
             } else {
                 alert('File type not permitted');
             }
@@ -78,24 +73,7 @@ const Dropzone = ({props}, ref) => {
         }
     }
 
-    const [fileUrl, setFileUrl] = useState("");
-
-    const handlePost = () => {
-        var d = new FormData();
-        
-        d.append('upload_preset', 'default-preset');
-        d.append('file', selectedFiles[0]);
-        d.append('cloud_name', 'dmieyzfqg');
-        fetch(`https://api.cloudinary.com/v1_1/dmieyzfqg/image/upload`,{
-            method: "POST",
-            body: d
-        })
-        .then(response => response.json())
-        .then(data => {
-            setFileUrl(data.url);
-        })
-        .catch(err => console.log(err));
-    }
+    
 
     return (
         <>
@@ -127,7 +105,6 @@ const Dropzone = ({props}, ref) => {
                                     <AddPhotoAlternateIcon className="file-type-logo"/>
                                     <div className="file-type">{fileType(data.name)}</div>
                                     <span className={`file-name ${data.invalid ? 'file-error' : ''}`}>{data.name}</span>
-                                    
                                 </div>
                                 <div className="file-remove" onClick={() => removeFile()}>X</div>
                             </div>
