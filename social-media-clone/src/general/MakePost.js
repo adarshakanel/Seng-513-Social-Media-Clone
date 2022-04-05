@@ -15,6 +15,7 @@ export const MakePost = () => {
     const { url, userInfo } = useContext(AppContext)
     const [file, setFile] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const [description, setDescription] = useState('');
     
 
     const fileFromDrop = (fileData) => {
@@ -23,8 +24,13 @@ export const MakePost = () => {
 
     // https://medium.com/geekculture/how-to-upload-images-to-cloudinary-with-a-react-app-f0dcc357999c
     // fetch to this url to post image
-    const handleClose = () => {  
+    const handleClose = (e) => { 
+        e.preventDefault();
         handlePost();
+        formVal.imageUrl = imageUrl;
+        formVal.date = date;
+        formVal.description = description;
+        makePost(e);
         setShow(false);
         
     }
@@ -41,7 +47,7 @@ export const MakePost = () => {
     const [formValues, setFormValues] = useState(formVal)
 
     const makePost = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -62,7 +68,7 @@ export const MakePost = () => {
     const handlePost = () => {
         var d = new FormData();
         
-        d.append('upload_preset', 'default-preset');
+        d.append('upload_preset', 'ofbqqtfw');
         d.append('file', file);
         console.log(file);
         d.append('cloud_name', 'dmieyzfqg');
@@ -105,6 +111,9 @@ export const MakePost = () => {
                             placeholder="Add a description..."
                             aria-label="Add a description..."
                             aria-describedby="basic-addon1"
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                            type="text"
                         />
                     </div>
                     
