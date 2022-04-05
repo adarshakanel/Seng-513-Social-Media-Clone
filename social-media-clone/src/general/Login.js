@@ -1,12 +1,15 @@
 import React from 'react'
 import logo from '../Resources/camera.png'
-import { useState, useContext } from 'react'
+import { useState, useContext, useRef } from 'react'
 import AppContext from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 import '../css/Login.css';
 
 export const Login = () => {
     const navigate = useNavigate();
+    const email = useRef();
+    const password = useRef();
+    const { url } = useContext(AppContext)
     const userLoginFormInfo = {
         username: "Username or Email",
         password: "Password"
@@ -16,11 +19,21 @@ export const Login = () => {
     const logIn = (e) => {
         e.preventDefault();
         // will call api
-        const success = true
+        const success = false;
+        fetch(url + 'login',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email.current.value, password: password.current.value })
+            })
+            .then(response => response === email.current.value ? success = true : email.current.value = "")
         if (success) {
             isLoggedIn(true);
             // setUserInfo({ ...getUserInfo, ...userLoginInfo })
             navigate('/user/', { replace: false })
+            setUserInfo({
+                /* */
+            })
         }
     }
     const reroute = (e, path) => {
@@ -34,10 +47,10 @@ export const Login = () => {
                 <form className='sign-up-login-form'>
                     <div className='form-fields'>
                         <input type="text" placeholder={userLoginInfo.username}
-                            className='form-field'></input>
+                            className='form-field' ref={email}></input>
                         {/* onChange={change => setUserLoginInfo({ ...userLoginInfo, username: change })} className='form-field'></input> */}
                         <input type="password" placeholder={userLoginInfo.password}
-                            className='form-field'></input>
+                            className='form-field' ref={password}></input>
                         {/* onChange={change => setUserLoginInfo({ ...userLoginInfo, password: change })} className='form-field'></input> */}
                     </div>
                     <button className='submit-btn' onClick={(e) => logIn(e)}>Log In</button>
