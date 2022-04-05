@@ -29,19 +29,29 @@ export const Home = () => {
         posts.push(<Posts />)
     }
 
+    const [allPosts, setAllPosts] = useState(selfPosts.concat(followingPosts));
+
+    useEffect(() => {
+        setAllPosts(prev => {
+            return prev.sort(function (post1, post2) {
+                return new Date(post2.date) - new Date(post1.date);
+            });
+        })
+    }, [selfPosts, followingPosts])
+
     return (
         <div className='background-div homepage-div'>
             <ul className='posts'>
-                {
+                {/* {
                     console.log(followingPosts)
 
                 }
                 {
                     console.log(selfPosts)
 
-                }
+                } */}
                 {
-                    posts.map(arg => <li>{arg}</li>)
+                    allPosts.map(post => <li>{post}</li>)
                 }
             </ul>
         </div>
