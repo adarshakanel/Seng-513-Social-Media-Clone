@@ -29,8 +29,9 @@ module.exports.getComment = async (req, res, next) => {
     if (id) {
         const post = await Post.findById(id)
             .populate("comments")
+        console.log(post)
         if (post) res.status(200).send(post.comments)
-        else res.status(400).send("post not found")
+        else res.status(400).send("comment not found")
     } else {
         res.status(400).send("incorrect information")
     }
