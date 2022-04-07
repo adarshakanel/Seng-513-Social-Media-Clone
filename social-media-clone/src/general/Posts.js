@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap'
 import './../css/Posts.css'
 import postImg from './paris.jpg'
 import pfp from '../Resources/man.png'
+import Comments from './Comments'
 
 export const Posts = () => {
     const btn = useRef(null);
@@ -38,14 +39,8 @@ export const Posts = () => {
                         }}></div>
 
                     </div>
-
-                    <div className='comment-section'>
-                        <form className='commentForm' action=''>
-                            <input className="commentInput" autocomplete="off" placeholder="Type a comment" />
-                            <button>Post</button>
-                        </form>
-                    </div>
-                    <small className='view-comments'>View all 5 comments</small>
+                    <Comments />
+                    
                 </Card.Footer>
 
             </Card>
