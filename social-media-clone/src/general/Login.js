@@ -11,7 +11,7 @@ export const Login = () => {
     const password = useRef();
     const { url } = useContext(AppContext)
     const userLoginFormInfo = {
-        username: "Username or Email",
+        username: "Email",
         password: "Password"
     }
     const [userLoginInfo, setUserLoginInfo] = useState(userLoginFormInfo)
@@ -19,21 +19,34 @@ export const Login = () => {
     const logIn = (e) => {
         e.preventDefault();
         // will call api
-        const success = false;
+        // let success = false;
+        // fetch(url + 'login',
+        //     {
+        //         method: 'POST',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         body: JSON.stringify({ email: email.current.value, password: password.current.value })
+        //     })
+        //     .then(response => console.log(response.json()))
         fetch(url + 'login',
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email.current.value, password: password.current.value })
             })
-            .then(response => response === email.current.value ? success = true : email.current.value = "")
-        if (success) {
+            .then(response => response.ok ? isLoggedIn = true : email.current.value = "")
+
+        if (isLoggedIn) {
             isLoggedIn(true);
+
+
             // setUserInfo({ ...getUserInfo, ...userLoginInfo })
             navigate('/user/', { replace: false })
-            setUserInfo({
-                /* */
-            })
+
+            // GET THE USER ID HERE, DONT JUST LEAVE IT BLANK
+
+            // setUserInfo({
+            //     /* */
+            // })
         }
     }
     const reroute = (e, path) => {

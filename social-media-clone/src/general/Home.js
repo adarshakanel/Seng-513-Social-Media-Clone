@@ -10,17 +10,18 @@ export const Home = () => {
         posts: []
     }]
     const [followingPosts, setFollowingPosts] = useState([])
-    const [selfPosts, setSelfPosts] = useState(null)
+    const [selfPosts, setSelfPosts] = useState([])
     useEffect(() => {
         setFollowingPosts([])
         setSelfPosts([])
-        fetch(url + `/following/${userInfo.userId}`)
+        fetch(url + `following/${userInfo.userId}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                const value = []
                 setSelfPosts({ userId: data._id, posts: data.posts })
-                data.following.map(following => setFollowingPosts([...followingPosts, { userId: following._id, posts: [following.posts] }]))
+                setFollowingPosts(data.following ? data.following.map(following => [...followingPosts, { userId: following._id, posts: [following.posts] }])
+                    : [])
+
             });
     }, [])
 
@@ -29,7 +30,8 @@ export const Home = () => {
         posts.push(<Posts />)
     }
 
-    const [allPosts, setAllPosts] = useState(selfPosts.concat(followingPosts));
+    const [allPosts, setAllPosts] = useState([selfPosts, ...followingPosts]);
+    // const [allPosts, setAllPosts] = useState([]);
 
     useEffect(() => {
         setAllPosts(prev => {
@@ -50,9 +52,9 @@ export const Home = () => {
                     console.log(selfPosts)
 
                 } */}
-                {
+                {/* {
                     allPosts.map(post => <li>{post}</li>)
-                }
+                } */}
             </ul>
         </div>
     )
