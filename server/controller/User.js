@@ -92,6 +92,7 @@ module.exports.userLogin = async (req, res, next) => {
             bcrypt.compare(password, user[0].password, function (err, result) {
                 // console.log(user[0].email)
                 if (result) res.status(200).send(`${user[0].email}`)
+                else res.status(400).send("wrong info")
             });
         } else {
             res.status(400).send("username or password incorrect")

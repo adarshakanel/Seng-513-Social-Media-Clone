@@ -15,7 +15,7 @@ export const Login = () => {
         password: "Password"
     }
     const [userLoginInfo, setUserLoginInfo] = useState(userLoginFormInfo)
-    const { isLoggedIn, getUserInfo, setUserInfo } = useContext(AppContext)
+    const { loggedIn, isLoggedIn, getUserInfo, setUserInfo } = useContext(AppContext)
     const logIn = (e) => {
         e.preventDefault();
         // will call api
@@ -27,18 +27,17 @@ export const Login = () => {
         //         body: JSON.stringify({ email: email.current.value, password: password.current.value })
         //     })
         //     .then(response => console.log(response.json()))
+        // console.log(loggedIn);
         fetch(url + 'login',
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email.current.value, password: password.current.value })
             })
-            .then(response => response.ok ? isLoggedIn = true : email.current.value = "")
+            .then(response => response.ok ? isLoggedIn(true) : email.current.value = "")
 
-        if (isLoggedIn) {
-            isLoggedIn(true);
-
-
+        if (loggedIn) {
+            // isLoggedIn(true);
             // setUserInfo({ ...getUserInfo, ...userLoginInfo })
             navigate('/user/', { replace: false })
 
