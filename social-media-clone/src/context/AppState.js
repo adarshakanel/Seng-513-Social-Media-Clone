@@ -5,9 +5,9 @@ const AppState = (props) => {
     // const theme = useTheme();
     // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const userInformation = {
-        fullName: "John Doe",
-        userId: '62389d0ee792273ebecf1551',
-        pfp: "a picture",
+        fullName: "",
+        userId: '',
+        pfp: "",
     }
     let url = 'http://localhost:5000/user/'
     let postUrl = 'http://localhost:5000/post/'

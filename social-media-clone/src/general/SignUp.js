@@ -37,6 +37,7 @@ export const SignUp = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formVals)
         }).then(response => response.ok ? setSignUpSuccessful(true) && setFormValues(formVals) : null)
+        navigate('/login', { replace: true })
         console.log(formVals);
     }
 

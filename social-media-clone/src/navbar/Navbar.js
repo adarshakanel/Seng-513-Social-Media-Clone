@@ -27,7 +27,7 @@ export const Navbars = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: path })
         };
-        fetch(url + `findId`, requestOptions)
+        fetch(url + `findIdFromUsername`, requestOptions)
             .then(response =>
                 response.ok ?
                     response.json() : null
@@ -72,12 +72,12 @@ export const Navbars = () => {
                                             <HomeIcon className='navLink'></HomeIcon>
                                         </div>
 
-                                        <div className="nav-link active navLink" onClick={(e) => { navbarClicked(e, "/chat") }}>
+                                        <div className="nav-link active navLink" onClick={(e) => { navbarClicked(e, "/chat/:1234") }}>
                                             <QuestionAnswerIcon className='navLink' />
                                         </div>
                                         <NavDropdown
                                             title={
-                                                <img src={require("../images/paris.jpg")} className='navBarImg' alt='profile' />
+                                                <img src={userInfo.pfp} className='navBarImg' alt='profile' />
                                             }
                                             id="basic-nav-dropdown"
                                         >

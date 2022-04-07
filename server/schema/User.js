@@ -32,10 +32,13 @@ const UserSchema = new Schema({
         }],
         default: () => { return []; }
     },
-    posts: [{
-        type: Schema.Types.ObjectId,
-        ref: "Post"
-    }],
+    posts: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: "Post"
+        }],
+        default: () => { return [] }
+    },
     pfp: {
         type: String,
     }

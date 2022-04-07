@@ -37,7 +37,10 @@ router.route("/following/:id")
 
 router.route("/findId")
     .post(async (req, res, next) => {
+        UserController.getUserIDFromEmail(req, res, next)
+    })
+router.route("/findIdFromUsername")
+    .post(async (req, res, next) => {
         UserController.getUserIDFromUsername(req, res, next)
     })
-
 module.exports = router;

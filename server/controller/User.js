@@ -26,6 +26,7 @@ module.exports.uploadToColudinary = (fileAddress) => {
 
 module.exports.postUser = async (req, res, next) => {
     const { email, username, password } = req.body;
+    console.log(email, username, password)
     // bcrypt the password
     await bcrypt.hash(password, saltRounds, async function (err, hash) {
         const user = new User({ email, username, password: hash });
@@ -68,6 +69,27 @@ module.exports.getUserIDFromUsername = async (req, res, next) => {
         // console.log(username)
         if (username) {
             const findUser = await User.find({ username })
+            if (findUser !== []) {
+                const user = await User.findById(findUser[0]._id)
+                // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
+                res.status(200).send(user)
+            }
+
+        } else res.status(400).send("user not found")
+    } catch (err) {
+        res.status(500).send(err)
+    }
+
+    // the url sent back is that of the image
+    // this.uploadToColudinary("./tree-736885__480.webp")
+};
+
+module.exports.getUserIDFromEmail = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        // console.log(username)
+        if (email) {
+            const findUser = await User.find({ email })
             if (findUser !== []) {
                 const user = await User.findById(findUser[0]._id)
                 // .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })

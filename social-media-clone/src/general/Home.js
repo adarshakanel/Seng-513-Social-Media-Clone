@@ -11,6 +11,8 @@ export const Home = () => {
     }]
     const [followingPosts, setFollowingPosts] = useState([])
     const [selfPosts, setSelfPosts] = useState(null)
+    // const [allPosts, setAllPosts] = useState([]);
+
     useEffect(() => {
         setFollowingPosts([])
         setSelfPosts([])
@@ -19,18 +21,17 @@ export const Home = () => {
             .then(data => {
                 // console.log(data)
                 setSelfPosts({ userId: data._id, posts: [data.posts] })
-                setFollowingPosts(data.following ? data.following.map(following => [...followingPosts, { userId: following._id, posts: [following.posts] }])
-                    : [])
+                setFollowingPosts(data.following.map(following => [...followingPosts, { userId: following._id, posts: [following.posts] }]))
 
             });
+        // setAllPosts(followingPosts.concat(selfPosts ? selfPosts : []))
     }, [])
 
-    const posts = []
-    for (let i = 0; i < 20; i++) {
-        posts.push(<Posts />)
-    }
+    // const posts = []
+    // for (let i = 0; i < 20; i++) {
+    //     posts.push(<Posts />)
+    // }
 
-    const [allPosts, setAllPosts] = useState([selfPosts, ...followingPosts]);
     // const [allPosts, setAllPosts] = useState([]);
 
     // useEffect(() => {
@@ -44,14 +45,13 @@ export const Home = () => {
     return (
         <div className='background-div homepage-div'>
             <ul className='posts'>
-                {
-                    console.log([selfPosts, ...followingPosts])
+                {/* {
+                    console.log((followingPosts.concat(selfPosts ? selfPosts : [])))
 
-                }
-
+                } */}
                 {
                     // allPosts.map(post => <li>{post}</li>)
-                    posts.map(post => <li>{post}</li>)
+                    followingPosts.concat(selfPosts ? selfPosts : []).map(post => <li>{post.posts}</li>)
                 }
             </ul>
         </div>
