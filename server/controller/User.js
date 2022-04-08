@@ -41,7 +41,8 @@ module.exports.getUser = async (req, res, next) => {
     try {
         const { id } = req.params;
         const user = await User.findById(id)
-            .populate({ path: "posts", populate: { path: "comments", path: "likedBy" } })
+            .populate({ path: "posts", populate: { path: "comments" } })
+            .populate({ path: "posts", populate: { path: "likedBy" } })
 
         if (user) res.status(200).send(user)
         else res.status(400).send("user not found")
