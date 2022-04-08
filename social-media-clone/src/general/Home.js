@@ -51,16 +51,17 @@ export const Home = () => {
         <div className='background-div homepage-div'>
             <ul className='posts'>
                 {
-
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {
                             return new Date(b.date) - new Date(a.date)
                         }).map(post => post ?
                             (<li>
+                                {console.log(userInfo.userId)}
                                 <Post
                                     username={post.username}
                                     pfp={post.pfp}
                                     userId={post.userId}
+                                    postId={post.postId}
                                     image={post.image}
                                     commentId={post.commentId}
                                     date={post.date}

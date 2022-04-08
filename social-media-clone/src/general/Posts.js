@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Card, FormControl } from 'react-bootstrap'
 import './../css/Posts.css'
 import Comment from './Comment'
@@ -9,6 +9,7 @@ import AppContext from '../context/AppContext'
 export const Posts = (props) => {
 
     const [commentInput, setCommentInput] = useState('');
+    const[comments, setComments] = useState([])
     let commentUrl = 'http://localhost:5000/comment/'
 
     const postComment = (e) => {
@@ -34,6 +35,26 @@ export const Posts = (props) => {
     }
 
     const btn = useRef(null);
+
+    function makeObject(id, description, date) {
+        return(
+            {
+                id, description, date
+            }
+        )
+    }
+
+//    useEffect(()=>{
+//        setComments([])
+//        fetch(commentUrl + `${props.postId}`)
+//            .then(response => response.json())
+//            .then(data =>{
+//                setComments(data.map(comment => (
+//                    makeObject(comment._id, comment.description, comment.date)
+//                )))
+//            })
+//
+//    }, [])
 
     return (
         <div id='Post-Section'>
