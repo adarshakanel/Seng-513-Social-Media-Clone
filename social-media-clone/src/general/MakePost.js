@@ -25,10 +25,22 @@ export const MakePost = () => {
     // fetch to this url to post image
     const handleClose = (e) => {
         e.preventDefault();
-        handlePost();
-        setShow(false);
-
+        if(file != '' && description != '') {
+            handlePost();
+            setShow(false);
+        }
+        else {
+            alert("Upload an image and fill in a description")
+        }
     }
+
+    const handleCancel = (e) => {
+        e.preventDefault();
+        setFile('');
+        setDescription('');
+        setShow(false);
+    }
+
     const handleShow = () => setShow(true);
 
     const formVal = {
@@ -113,6 +125,9 @@ export const MakePost = () => {
 
                     <Button variant="primary" className='modal-button' onClick={handleClose}>
                         Post
+                    </Button>
+                    <Button variant="secondary" onClick={handleCancel}>
+                        Cancel
                     </Button>
 
                 </Modal.Footer>
