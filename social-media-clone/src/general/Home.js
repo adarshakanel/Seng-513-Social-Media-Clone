@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import Posts from './Posts'
+import Post from './Posts'
 import './../css/Home.css'
 import AppContext from '../context/AppContext'
 
@@ -48,9 +48,7 @@ export const Home = () => {
     }, [userInfo])
 
     const posts = []
-    for (let i = 0; i < 20; i++) {
-        posts.push(<Posts />)
-    }
+    
 
     return (
         <div className='background-div homepage-div'>
@@ -69,7 +67,17 @@ export const Home = () => {
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {
                             return new Date(a.date) - new Date(b.plantingDate)
-                        }).map(post => <li>postId:{post.userId}</li>)
+                            
+                        }).map(post => <li><Post 
+                                                username = {post.username}
+                                                pfp = {post.pfp}
+                                                userId = {post.userId}
+                                                image = {post.image}
+                                                commentId = {post.commentId}
+                                                date = {post.date}
+                                                likedBy = {post.likedBy}
+                                                description = {post.description} /> 
+                                        </li>)
                         : "NOTHING FOUND"
 
                 }

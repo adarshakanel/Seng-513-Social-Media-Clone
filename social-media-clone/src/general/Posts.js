@@ -4,19 +4,19 @@ import './../css/Posts.css'
 import postImg from './paris.jpg'
 import pfp from '../Resources/man.png'
 
-export const Posts = () => {
+export const Posts = (props) => {
     const btn = useRef(null);
 
     return (
         <div id='Post-Section'>
             <Card style={{ maxWidth: '100%', maxHeight: 'auto', width: 'max-content', height: 'auto' }}>
                 <Card.Header>
-                    <div className='profile-picture'><img src={pfp} /></div>
-                    <div className='username'>petermckinnon</div>
+                    <div className='profile-picture'><img src={props.pfp} /></div>
+                    <div className='username'>{props.username}</div>
                 </Card.Header>
                 <Card.Body>
                     <div className='post-picture'>
-                        <img src={postImg}></img>
+                        <img src={props.image}></img>
                     </div>
 
                 </Card.Body>
@@ -24,7 +24,7 @@ export const Posts = () => {
 
                     <div className='likebtn-desc-post-container'>
                         <div className='post-text'>
-                            <p className='post-caption'><span className='footer-username' >petermckinnon </span>Paris is beautiful 😍</p>
+                            <p className='post-caption'><span className='footer-username' >{props.username} </span>{props.description}</p>
                         </div>
                         <div ref={btn} id='likeButton' className='unliked' onClick={() => {
                             if (btn.current.classList.contains("liked")) {
