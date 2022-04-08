@@ -9,10 +9,9 @@ import { Button, Modal, FormControl } from 'react-bootstrap'
 import AppContext from '../context/AppContext';
 import Dropzone from "../Dropzone/Dropzone"
 
-
 export const MakePost = () => {
     const [show, setShow] = useState(false);
-    const { postUrl, userInfo } = useContext(AppContext)
+    const { postUrl, userInfo, url } = useContext(AppContext)
     const [file, setFile] = useState('');
     const [description, setDescription] = useState('');
 
@@ -27,6 +26,7 @@ export const MakePost = () => {
         e.preventDefault();
         if (file != '' && description != '') {
             handlePost();
+
             setShow(false);
         }
         else {

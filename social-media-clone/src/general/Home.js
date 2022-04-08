@@ -48,7 +48,7 @@ export const Home = () => {
     }, [userInfo])
 
     const posts = []
-    
+
 
     return (
         <div className='background-div homepage-div'>
@@ -67,17 +67,21 @@ export const Home = () => {
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {
                             return new Date(a.date) - new Date(b.plantingDate)
-                            
-                        }).map(post => <li><Post 
-                                                username = {post.username}
-                                                pfp = {post.pfp}
-                                                userId = {post.userId}
-                                                image = {post.image}
-                                                commentId = {post.commentId}
-                                                date = {post.date}
-                                                likedBy = {post.likedBy}
-                                                description = {post.description} /> 
-                                        </li>)
+
+                        }).map(post => post ?
+                            (<li>
+                                <Post
+                                    username={post.username}
+                                    pfp={post.pfp}
+                                    userId={post.userId}
+                                    image={post.image}
+                                    commentId={post.commentId}
+                                    date={post.date}
+                                    likedBy={post.likedBy}
+                                    description={post.description} />
+                            </li>) :
+                            <></>
+                        )
                         : "NOTHING FOUND"
 
                 }
