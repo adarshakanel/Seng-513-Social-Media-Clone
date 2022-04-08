@@ -55,7 +55,7 @@ module.exports.getFollowing = async (req, res, next) => {
         const { id } = req.params;
         const user = await User.findById(id)
             .populate({ path: "following", populate: { path: "posts", populate: "comments" } })
-        console.log(user)
+        // console.log(user)
         if (user) res.status(200).send(user)
         else res.status(400).send("user not found")
     } catch (err) {
@@ -109,7 +109,7 @@ module.exports.userLogin = async (req, res, next) => {
     const { email, password } = req.body;
     if (email) {
         const user = await User.find({ email })
-        console.log(email, password)
+        // console.log(email, password)
         if (user.length !== 0) {
             bcrypt.compare(password, user[0].password, function (err, result) {
                 // console.log(user[0].email)

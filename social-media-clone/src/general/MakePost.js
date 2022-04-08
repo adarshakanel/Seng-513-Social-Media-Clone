@@ -25,7 +25,7 @@ export const MakePost = () => {
     // fetch to this url to post image
     const handleClose = (e) => {
         e.preventDefault();
-        if(file != '' && description != '') {
+        if (file != '' && description != '') {
             handlePost();
             setShow(false);
         }
@@ -50,7 +50,8 @@ export const MakePost = () => {
     }
 
     let today = new Date()
-    let date = `${(today.getMonth() + 1) + '-' + today.getDate()}`;
+    // let date = `${(today.getMonth() + 1) + '-' + today.getDate()}`;
+    let date = new Date(Date.now()).toISOString();
     // const [formValues, setFormValues] = useState(formVal)
 
     const makePost = async (image, date, description) => {
@@ -65,7 +66,6 @@ export const MakePost = () => {
                 response.ok ?
                     console.log("post has been made") : null
             )
-
     }
 
     const dropRef = useRef();
