@@ -12,10 +12,10 @@ export const Home = () => {
     const [followingPosts, setFollowingPosts] = useState([])
     const [selfPosts, setSelfPosts] = useState(null)
 
-    function makeObject(username, pfp, userId, postId, image, commentId, date, likedBy, description) {
+    function makeObject(username, pfp, userId, postId, image, comments, date, likedBy, description) {
         return (
             {
-                username, pfp, userId, postId, image, commentId, date, likedBy, description
+                username, pfp, userId, postId, image, comments, date, likedBy, description
             }
         )
     }
@@ -50,19 +50,24 @@ export const Home = () => {
     return (
         <div className='background-div homepage-div'>
             <ul className='posts'>
+                {/* 
+                {
+                    followingPosts.concat(selfPosts).map(post => console.log(post))
+                } */}
                 {
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {
                             return new Date(b.date) - new Date(a.date)
                         }).map(post => post ?
                             (<li>
+                                {/* {console.log(userInfo.userId)} */}
                                 <Post
                                     username={post.username}
                                     pfp={post.pfp}
                                     userId={post.userId}
                                     postId={post.postId}
                                     image={post.image}
-                                    commentId={post.commentId}
+                                    comments={post.comments ? post.comments : null}
                                     date={post.date}
                                     likedBy={post.likedBy}
                                     description={post.description} />

@@ -108,6 +108,7 @@ module.exports.getUserIDFromEmail = async (req, res, next) => {
 
 module.exports.userLogin = async (req, res, next) => {
     const { email, password } = req.body;
+    console.log(req.body)
     if (email) {
         const user = await User.find({ email })
         // console.log(email, password)

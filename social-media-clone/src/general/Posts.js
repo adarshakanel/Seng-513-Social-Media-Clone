@@ -9,12 +9,12 @@ import AppContext from '../context/AppContext'
 export const Posts = (props) => {
 
     const [commentInput, setCommentInput] = useState('');
-    const[comments, setComments] = useState([])
+    const [comments, setComments] = useState([])
     let commentUrl = 'http://localhost:5000/comment/'
 
     const postComment = (e) => {
         e.preventDefault();
-        if(commentInput != ''){
+        if (commentInput != '') {
             makeComment(props.postId, date, commentInput);
             setCommentInput('');
         }
@@ -25,35 +25,35 @@ export const Posts = (props) => {
     const makeComment = async (postId, date, comment) => {
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({description: comment, date})
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ description: comment, date })
         }
         await fetch(commentUrl + `${postId}`, requestOptions)
             .then(response =>
-                    response.ok ?
-                        console.log("Comment has been made"): null)
+                response.ok ?
+                    console.log("Comment has been made") : null)
     }
 
     const btn = useRef(null);
 
     function makeObject(id, description, date) {
-        return(
+        return (
             {
                 id, description, date
             }
         )
     }
 
-    useEffect(()=>{
-        fetch(commentUrl + `${props.postId}`)
-            .then(response => response.json())
-            .then(data =>{
-                setComments(data.map(comment => (
-                    makeObject(comment._id, comment.description, comment.date)
-                )))
-            })
+    // useEffect(()=>{
+    //     fetch(commentUrl + `${props.postId}`)
+    //         .then(response => response.json())
+    //         .then(data =>{
+    //             setComments(data.map(comment => (
+    //                 makeObject(comment._id, comment.description, comment.date)
+    //             )))
+    //         })
 
-    }, [])
+    // }, [])
 
     return (
         <div id='Post-Section'>
@@ -86,7 +86,7 @@ export const Posts = (props) => {
                         }}></div>
 
                     </div>
-                    
+
                     <div className='scrollable-comments'>
                         <Comment />
                         <Comment />
@@ -94,7 +94,7 @@ export const Posts = (props) => {
                         <Comment />
                     </div>
                     <div className='comment-section'>
-                        <FormControl 
+                        <FormControl
                             className='commentInput'
                             placeholder="Type a comment"
                             value={commentInput}
@@ -105,7 +105,7 @@ export const Posts = (props) => {
                             Post
                         </button>
                     </div>
-                    
+
                 </Card.Footer>
 
             </Card>

@@ -8,16 +8,22 @@ const PostSchema = new Schema({
         required: true,
     }],
     description: String,
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-    }],
-    likedBy: [{
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        // unique: true,
-        dropDups: true
-    }],
+    comments: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
+        }],
+        default: () => { return []; }
+    },
+    likedBy: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: "User",
+            // unique: true,
+            dropDups: true
+        }],
+        default: () => { return []; }
+    },
     date: {
         type: String,
         required: true
