@@ -44,17 +44,16 @@ export const Posts = (props) => {
         )
     }
 
-//    useEffect(()=>{
-//        setComments([])
-//        fetch(commentUrl + `${props.postId}`)
-//            .then(response => response.json())
-//            .then(data =>{
-//                setComments(data.map(comment => (
-//                    makeObject(comment._id, comment.description, comment.date)
-//                )))
-//            })
-//
-//    }, [])
+    useEffect(()=>{
+        fetch(commentUrl + `${props.postId}`)
+            .then(response => response.json())
+            .then(data =>{
+                setComments(data.map(comment => (
+                    makeObject(comment._id, comment.description, comment.date)
+                )))
+            })
+
+    }, [])
 
     return (
         <div id='Post-Section'>
