@@ -25,12 +25,11 @@ export const Login = () => {
                 body: JSON.stringify({ email: email.current.value, password: password.current.value })
             })
             // .then(response => response.ok ? isLoggedIn(true
-            .then(response => response.ok ? isLoggedIn({ loggedIn: true }, isnowLoggedIn()
-            ) : null)
+            .then(response => response.ok ? isLoggedIn({ loggedIn: true }, isnowLoggedIn()) : null)
 
     }
     function isnowLoggedIn() {
-        console.log(email.current.value)
+        // console.log(email.current.value)
         fetch(url + 'findId',
             {
                 method: 'POST',
@@ -38,9 +37,21 @@ export const Login = () => {
                 body: JSON.stringify({ email: email.current.value })
             })
             .then(response => response.json())
-            .then(data => setUserInfo({ ...userInfo, userId: data._id, fullName: data.username, pfp: "http://res.cloudinary.com/dmieyzfqg/image/upload/v1647892980/513-social-media-clone/kfkhr70nrwensq2q1zer.webp" }))
+            .then(data => setUserInfo({
+                ...userInfo, userId: data._id,
+                fullName: data.username,
+                pfp: "http://res.cloudinary.com/dmieyzfqg/image/upload/v1647892980/513-social-media-clone/kfkhr70nrwensq2q1zer.webp"
+            }))
+        // userInfo({ loggedIn: true })
         navigate('/user/', { replace: false })
+
     }
+
+    // useEffect(() => {
+    //     if (loggedIn) {
+    //         navigate('/user/', { replace: false })
+    //     }
+    // }, [userInfo])
 
     const reroute = (e, path) => {
         e.preventDefault();

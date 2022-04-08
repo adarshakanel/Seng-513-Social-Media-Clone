@@ -15,43 +15,42 @@ export const Home = () => {
 
     useEffect(() => {
         setFollowingPosts([])
-        setSelfPosts([])
+        setSelfPosts({})
+        console.log(userInfo.userId)
         fetch(url + `following/${userInfo.userId}`)
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
-                setSelfPosts({ userId: data._id, posts: [data.posts] })
-                setFollowingPosts(data.following.map(following => [...followingPosts, { userId: following._id, posts: [following.posts] }]))
+                setSelfPosts({
+                    username: data.username, pfp: data.pfp,
+                    userId: data._id, posts: [data.posts]
+                })
+                setFollowingPosts(data.following.posts.map(following =>
+                ({
+                    username: following.username, pfp: following.pfp, userId: following._id, posts: [following.posts]
+                })
+                ))
 
             });
-        // setAllPosts(followingPosts.concat(selfPosts ? selfPosts : []))
-    }, [])
+    }, [userInfo])
 
-    // const posts = []
-    // for (let i = 0; i < 20; i++) {
-    //     posts.push(<Posts />)
-    // }
-
-    // const [allPosts, setAllPosts] = useState([]);
-
-    // useEffect(() => {
-    //     setAllPosts(prev => {
-    //         return prev.sort(function (post1, post2) {
-    //             return new Date(post2.date) - new Date(post1.date);
-    //         });
-    //     })
-    // }, [selfPosts, followingPosts])
+    const posts = []
+    for (let i = 0; i < 20; i++) {
+        posts.push(<Posts />)
+    }
 
     return (
         <div className='background-div homepage-div'>
             <ul className='posts'>
                 {/* {
-                    console.log((followingPosts.concat(selfPosts ? selfPosts : [])))
+                    console.log(followingPosts.concat(selfPosts ? selfPosts : []).map(post => post))
 
                 } */}
                 {
-                    // allPosts.map(post => <li>{post}</li>)
-                    followingPosts.concat(selfPosts ? selfPosts : []).map(post => <li>{post.posts}</li>)
+                    posts.map(post => <li>{post}</li>)
+                    // followingPosts.concat(selfPosts ? selfPosts : []).map(post => <li>{post.pfp}</li>)
+                    // followingPosts.concat(selfPosts ? selfPosts : []).map(user =>
+                    //     user.posts.map(post => <li>{post._id}</li>)
+                    // )
                 }
             </ul>
         </div>
