@@ -48,7 +48,8 @@ export const Navbars = () => {
             <nav className="navbar navbar-expand navbar-light bg-light">
                 <div className="container-fluid">
                     <div className="navbar-brand navbarLogo" onClick={(e) => navbarClicked(e, "/")}>InstaChat</div>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     {
@@ -56,7 +57,7 @@ export const Navbars = () => {
                             <div className="navBarContainer ">
                                 <div className="navbar-nav">
                                     <div className="input-group rounded">
-                                        <input type="search" className="form-control rounded" value={searchVal} onChange={e => setSearchVal(e.target.value)}
+                                        <input type="search" className="form-control rounded seachBarNavbar" value={searchVal} onChange={e => setSearchVal(e.target.value)}
                                             onKeyPress={(e) => e.key === 'Enter' ? NavbarSearchClicked(e, `${searchVal}`) : null}
                                             placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                         <span className="input-group-text border-0" id="search-addon">
