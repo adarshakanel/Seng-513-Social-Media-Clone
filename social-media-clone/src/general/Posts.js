@@ -1,10 +1,38 @@
-import React, { useRef } from 'react'
-import { Card } from 'react-bootstrap'
+import React, { useRef, useState, useContext } from 'react'
+import { Card, FormControl } from 'react-bootstrap'
 import './../css/Posts.css'
-import postImg from './paris.jpg'
-import pfp from '../Resources/man.png'
+import Comment from './Comment'
+import AppContext from '../context/AppContext'
+
+
 
 export const Posts = (props) => {
+
+    const [commentInput, setCommentInput] = useState('');
+    let commentUrl = 'http://localhost:5000/comment/'
+
+    const postComment = (e) => {
+        e.preventDefault();
+        if(commentInput != ''){
+            makeComment(props.postId, date, commentInput);
+            setCommentInput('');
+        }
+    }
+
+    let date = new Date(Date.now()).toISOString();
+
+    const makeComment = async (postId, date, comment) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({description: comment, date})
+        }
+        await fetch(commentUrl + `${postId}`, requestOptions)
+            .then(response =>
+                    response.ok ?
+                        console.log("Comment has been made"): null)
+    }
+
     const btn = useRef(null);
 
     return (
@@ -38,14 +66,26 @@ export const Posts = (props) => {
                         }}></div>
 
                     </div>
-
-                    <div className='comment-section'>
-                        <form className='commentForm' action=''>
-                            <input className="commentInput" autocomplete="off" placeholder="Type a comment" />
-                            <button>Post</button>
-                        </form>
+                    
+                    <div className='scrollable-comments'>
+                        <Comment />
+                        <Comment />
+                        <Comment />
+                        <Comment />
                     </div>
-                    <small className='view-comments'>View all 5 comments</small>
+                    <div className='comment-section'>
+                        <FormControl 
+                            className='commentInput'
+                            placeholder="Type a comment"
+                            value={commentInput}
+                            onChange={e => setCommentInput(e.target.value)}
+                            type="text"
+                        />
+                        <button className='comment-post-btn' onClick={postComment}>
+                            Post
+                        </button>
+                    </div>
+                    
                 </Card.Footer>
 
             </Card>

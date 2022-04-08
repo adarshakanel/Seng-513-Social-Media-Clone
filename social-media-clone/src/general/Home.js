@@ -51,11 +51,6 @@ export const Home = () => {
         <div className='background-div homepage-div'>
             <ul className='posts'>
                 {
-                    console.log(followingPosts.concat(selfPosts).sort(function (a, b) {
-                        return new Date(a.date) - new Date(b.plantingDate)
-                    }))
-                }
-                {
 
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {

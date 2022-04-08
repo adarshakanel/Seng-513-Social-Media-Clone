@@ -1,0 +1,7 @@
+.btn-close{
+    display: none;
+}
+.toast-header > small{
+    float: right;
+    margin-right: 2%;
+}
