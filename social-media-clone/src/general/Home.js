@@ -4,7 +4,7 @@ import './../css/Home.css'
 import AppContext from '../context/AppContext'
 
 export const Home = () => {
-    const { userInfo, url } = useContext(AppContext)
+    const { userInfo, url, show } = useContext(AppContext)
     const followingPostsExample = [{
         userId: 0,
         posts: []
@@ -45,10 +45,7 @@ export const Home = () => {
                         })
                 )
             });
-    }, [userInfo])
-
-    const posts = []
-
+    }, [userInfo, show])
 
     return (
         <div className='background-div homepage-div'>
@@ -59,11 +56,7 @@ export const Home = () => {
                     }))
                 }
                 {
-                    // followingPosts.concat(selfPosts).sort(function (a, b) {
-                    //     return new Date(a.date) - new Date(b.plantingDate)
-                    // }).map(post => <li>{post.userId}</li>)
-                    // <li>{userInfo.userId}</li>
-                    // posts.map(post => <li>{post}</li>)
+
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {
                             return new Date(a.date) - new Date(b.plantingDate)

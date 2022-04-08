@@ -10,8 +10,8 @@ import AppContext from '../context/AppContext';
 import Dropzone from "../Dropzone/Dropzone"
 
 export const MakePost = () => {
-    const [show, setShow] = useState(false);
-    const { postUrl, userInfo, url } = useContext(AppContext)
+    // const [show, setShow] = useState(false);
+    const { postUrl, userInfo, show, setShow } = useContext(AppContext)
     const [file, setFile] = useState('');
     const [description, setDescription] = useState('');
 

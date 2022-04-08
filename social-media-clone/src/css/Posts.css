@@ -29,6 +29,8 @@
 
 .post-picture > img {
   max-width: 100%;
+  width: 600px !important;
+  height: 300px !important;
   height: auto;
   border-radius: 5px;
 }
