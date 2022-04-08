@@ -47,6 +47,8 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
 }
 
 .usernameText {
@@ -56,7 +58,6 @@
 
 .ProfileBottom {
   color: blue !important;
-
   display: flex;
   width: 100%;
   justify-content: space-between;

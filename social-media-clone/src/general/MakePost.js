@@ -8,12 +8,14 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Button, Modal, FormControl } from 'react-bootstrap'
 import AppContext from '../context/AppContext';
 import Dropzone from "../Dropzone/Dropzone"
+import { useNavigate } from 'react-router-dom'
 
 export const MakePost = () => {
     // const [show, setShow] = useState(false);
-    const { postUrl, userInfo, show, setShow } = useContext(AppContext)
+    const { postUrl, userInfo, url, show, setShow } = useContext(AppContext)
     const [file, setFile] = useState('');
     const [description, setDescription] = useState('');
+    const navigate = useNavigate();
 
 
     const fileFromDrop = (fileData) => {
@@ -26,6 +28,7 @@ export const MakePost = () => {
         e.preventDefault();
         if (file != '' && description != '') {
             handlePost();
+            navigate(`/user/`, { replace: true })
 
             setShow(false);
         }

@@ -45,7 +45,7 @@ export const Home = () => {
                         })
                 )
             });
-    }, [userInfo, show])
+    }, [userInfo, url, show])
 
     return (
         <div className='background-div homepage-div'>
@@ -59,8 +59,7 @@ export const Home = () => {
 
                     (userInfo.userId) ?
                         followingPosts.concat(selfPosts).sort(function (a, b) {
-                            return new Date(a.date) - new Date(b.plantingDate)
-
+                            return new Date(b.date) - new Date(a.date)
                         }).map(post => post ?
                             (<li>
                                 <Post

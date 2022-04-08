@@ -89,19 +89,19 @@ export const Profile = () => {
                                         name !== userInfo.userId ?
                                             !person.followers.includes(userInfo.userId) ?
                                                 <>
-                                                    <Button variant="outline-primary" onClick={e => messageButtonClicked(e)} >
+                                                    <Button variant="outline-primary mt-3" onClick={e => messageButtonClicked(e)} >
                                                         Message
                                                     </Button>
-                                                    <Button onClick={e => updateUser(e)} >
+                                                    <Button class="mt-3 btn btn-primary" onClick={e => updateUser(e)} >
                                                         Follow
                                                     </Button>
                                                 </>
                                                 :
                                                 <>
-                                                    <Button variant="outline-primary" onClick={e => messageButtonClicked(e)} >
+                                                    <Button variant="outline-primary mt-3" onClick={e => messageButtonClicked(e)} >
                                                         Message
                                                     </Button>
-                                                    <Button variant="secondary" onClick={e => updateUser(e)} >
+                                                    <Button variant="secondary mt-3" onClick={e => updateUser(e)} >
                                                         Following
                                                     </Button>
                                                 </>
