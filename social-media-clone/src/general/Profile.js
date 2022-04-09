@@ -82,7 +82,7 @@ export const Profile = () => {
                         <Card.Body className='descContainer' >
                             <Card.Title>
                                 <div className="ProfileTop">
-                                    <div className="usernameText">
+                                    <div className="usernameText mt-3">
                                         {person.username}
                                     </div>
                                     {
@@ -92,7 +92,7 @@ export const Profile = () => {
                                                     <Button variant="outline-primary mt-3" onClick={e => messageButtonClicked(e)} >
                                                         Message
                                                     </Button>
-                                                    <Button class="mt-3 btn btn-primary" onClick={e => updateUser(e)} >
+                                                    <Button class="btn btn-primary mt-3" onClick={e => updateUser(e)} >
                                                         Follow
                                                     </Button>
                                                 </>
