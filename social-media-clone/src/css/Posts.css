@@ -137,5 +137,5 @@ p.first-comment {
 
 .scrollable-comments {
   max-height: 8rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 }

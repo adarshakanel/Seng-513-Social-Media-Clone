@@ -64,7 +64,6 @@ export const Home = () => {
                                 {console.log(userInfo.userId)}
                                 <Post
                                     username={post.username}
-                                    pfp={post.pfp}
                                     userId={post.userId}
                                     postId={post.postId}
                                     image={post.image}

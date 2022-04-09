@@ -77,7 +77,7 @@ export const Posts = (props) => {
         <div id='Post-Section'>
             <Card style={{ maxWidth: '100%', maxHeight: 'auto', width: 'max-content', height: 'auto' }}>
                 <Card.Header>
-                    <div className='profile-picture'><img src={props.pfp} /></div>
+                    <div className='profile-picture'><img src={userInfo.pfp} /></div>
                     <div className='username'>{props.username}</div>
                 </Card.Header>
                 <Card.Body>
@@ -92,7 +92,6 @@ export const Posts = (props) => {
                         <div className='post-text'>
                             <p className='post-caption'><span className='footer-username' >{props.username} </span>{props.description}</p>
                         </div>
-                        {console.log(props.postId)}
                         <div ref={btn} id='likeButton' className={likeStatus()} onClick={() => {
                             if (btn.current.classList.contains("liked")) {
                                 btn.current.classList.remove('liked');

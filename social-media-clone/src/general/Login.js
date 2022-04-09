@@ -40,7 +40,7 @@ export const Login = () => {
             .then(data => setUserInfo({
                 ...userInfo, userId: data._id,
                 fullName: data.username,
-                pfp: "http://res.cloudinary.com/dmieyzfqg/image/upload/v1647892980/513-social-media-clone/kfkhr70nrwensq2q1zer.webp"
+                pfp: "https://res.cloudinary.com/dmieyzfqg/image/upload/v1649547102/ikoinnijxz7fftl6shd3.png"
             }))
         // userInfo({ loggedIn: true })
         navigate('/user/', { replace: false })
