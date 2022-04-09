@@ -9,7 +9,6 @@ import AppContext from '../context/AppContext'
 export const Posts = (props) => {
 
     const [commentInput, setCommentInput] = useState('');
-    const [comments, setComments] = useState([])
     let commentUrl = 'http://localhost:5000/comment/'
 
     const postComment = (e) => {
@@ -88,10 +87,21 @@ export const Posts = (props) => {
                     </div>
 
                     <div className='scrollable-comments'>
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                        <Comment />
+                        {
+                            props.comments ?
+                                props.comments.sort(function (a, b) {
+                                    return new Date(a.date) - new Date(b.date)
+                                }).map(comment => comment ?
+                                    (
+                                        <Comment 
+                                            userId = {comment._id}
+                                            description = {comment.description}
+                                            date = {comment.date}
+                                        />
+                                    ) : <></>
+                                )
+                                : <></>
+                        }
                     </div>
                     <div className='comment-section'>
                         <FormControl

@@ -60,7 +60,7 @@ export const Home = () => {
                             return new Date(b.date) - new Date(a.date)
                         }).map(post => post ?
                             (<li>
-                                {/* {console.log(userInfo.userId)} */}
+                                { console.log(userInfo.userId)} 
                                 <Post
                                     username={post.username}
                                     pfp={post.pfp}
