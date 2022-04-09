@@ -10,6 +10,8 @@ export const Posts = (props) => {
     const { userInfo } = useContext(AppContext)
     const [commentInput, setCommentInput] = useState('');
     let commentUrl = 'http://localhost:5000/comment/'
+    let likeUrl = 'http://localhost:5000/post/';
+    let unlikeUrl = 'http://localhost:5000/post/unlike/';
 
     const postComment = async (e) => {
         e.preventDefault();
@@ -37,24 +39,39 @@ export const Posts = (props) => {
 
     const btn = useRef(null);
 
-    function makeObject(id, description, date) {
-        return (
-            {
-                id, description, date
-            }
-        )
+    const likePost = () => {
+        const requestOptions ={
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id: props.postId})
+        }
+        fetch(likeUrl + `${userInfo.userId}`, requestOptions)
+            .then(response =>
+                    response.ok ?
+                        console.log("Liked"): null)
     }
 
-    // useEffect(()=>{
-    //     fetch(commentUrl + `${props.postId}`)
-    //         .then(response => response.json())
-    //         .then(data =>{
-    //             setComments(data.map(comment => (
-    //                 makeObject(comment._id, comment.description, comment.date)
-    //             )))
-    //         })
+    const unlikePost = () => {
+        const requestOptions ={
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id: props.postId})
+        }
+        fetch(unlikeUrl + `${userInfo.userId}`, requestOptions)
+            .then(response =>
+                    response.ok ?
+                        console.log("Unliked"): null)
+    }
 
-    // }, [])
+    const likeStatus = () => {
+        if(props.likedBy == null)
+            return 'unliked'
+        for(const like of props.likedBy){
+            if(like._id === userInfo.userId)
+                return 'liked'
+        }
+        return 'unliked'
+    }
 
     return (
         <div id='Post-Section'>
@@ -75,14 +92,17 @@ export const Posts = (props) => {
                         <div className='post-text'>
                             <p className='post-caption'><span className='footer-username' >{props.username} </span>{props.description}</p>
                         </div>
-                        <div ref={btn} id='likeButton' className='unliked' onClick={() => {
+                        {console.log(props.postId)}
+                        <div ref={btn} id='likeButton' className={likeStatus()} onClick={() => {
                             if (btn.current.classList.contains("liked")) {
                                 btn.current.classList.remove('liked');
                                 btn.current.classList.add('unliked');
+                                unlikePost();
                             }
                             else {
                                 btn.current.classList.remove('unliked');
                                 btn.current.classList.add('liked');
+                                likePost();
                             }
                         }}></div>
 
