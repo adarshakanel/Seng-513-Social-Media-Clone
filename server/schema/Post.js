@@ -19,10 +19,10 @@ const PostSchema = new Schema({
         type: [{
             type: Schema.Types.ObjectId,
             ref: "User",
-            // unique: true,
             dropDups: true
         }],
-        default: () => { return []; }
+        default: () => { return []; },
+        unique: false
     },
     date: {
         type: String,
