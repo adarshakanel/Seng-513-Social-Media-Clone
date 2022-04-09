@@ -21,8 +21,7 @@ const PostSchema = new Schema({
             ref: "User",
             dropDups: true
         }],
-        default: () => { return []; },
-        unique: false
+        default: () => { return []; }
     },
     date: {
         type: String,
