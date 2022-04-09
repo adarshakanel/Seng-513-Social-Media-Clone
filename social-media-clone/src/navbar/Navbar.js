@@ -72,7 +72,7 @@ export const Navbars = () => {
                                             <HomeIcon className='navLink'></HomeIcon>
                                         </div>
 
-                                        <div className="nav-link active navLink" onClick={(e) => { navbarClicked(e, "/chat") }}>
+                                        <div className="nav-link active navLink" onClick={(e) => { navigate(`/login`) }}>
                                             <QuestionAnswerIcon className='navLink' />
                                         </div>
                                         <NavDropdown

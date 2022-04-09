@@ -5,6 +5,10 @@ const mongoose = require("mongoose")
 const userRoutes = require("./routes/User")
 const postRoutes = require('./routes/Post')
 const commentRoutes = require('./routes/Comment')
+const userRoutess = require("./routes/userRoutes");
+const messageRoute = require("./routes/messagesRoute");
+const socket = require("socket.io")
+
 
 require("dotenv").config({ path: "./config.env" });
 
@@ -16,6 +20,8 @@ app.use(express.json());
 app.use("/user", userRoutes);
 app.use("/post", postRoutes);
 app.use("/comment", commentRoutes);
+app.use("/api/auth", userRoutess)
+app.use("/api/messages", messageRoute)
 
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
@@ -33,6 +39,27 @@ mongoose.connect(dbUrl, {
     console.log(err);
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
+const io = socket(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      credentials: true,
+    },
+  });
+
+global.users = new Map();
+
+io.on("connection", (socket) => {
+    socket.on("setuser", (userId) => {
+      users.set(userId, socket.id);
+    });
+
+    socket.on("send", (data) => {
+        const toSocket = users.get(data.to);
+        if (toSocket) {
+          socket.to(toSocket).emit("receive", data.message);
+        }
+      });
+    });
