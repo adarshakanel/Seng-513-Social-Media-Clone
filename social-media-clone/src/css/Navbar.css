@@ -45,8 +45,8 @@
 .input-group {
   /* margin-right: 60px !important; */
   margin-left: 10%;
-  min-width: 150px;
-  max-width: 200px;
+  min-width: 225px;
+  max-width: 300px;
   flex-wrap: nowrap;
 }
 
@@ -172,11 +172,19 @@
   .navBarContainer {
     margin-left: 20%;
   }
+  .input-group {
+    min-width: 200px;
+    max-width: 200px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .navBarContainer {
     margin-left: 10%;
+  }
+  .input-group {
+    min-width: 150px;
+    max-width: 200px;
   }
 }
 
