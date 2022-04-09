@@ -59,3 +59,14 @@ module.exports.likePost = async (req, res, next) => {
         res.status(400).send("information incorrect")
     }
 }
+
+module.exports.unlikePost = async (req, res, next) => {
+    const { id } = req.params
+    const postId = req.body.id
+    if (id && postId) {
+        await Post.findByIdAndUpdate({ "_id": postId }, { $pull: { likedBy: id } })
+        res.status(200).send("post has been unliked")
+    } else {
+        res.status(400).send("information incorrect")
+    }
+}

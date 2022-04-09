@@ -16,4 +16,8 @@ router.route('/:id')
         PostController.likePost(req, res, next)
     })
 
+router.route('/unlike/:id')
+    .put(async (req, res, next) => {
+        PostController.unlikePost(req, res, next)
+    })
 module.exports = router;
