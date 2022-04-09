@@ -5,6 +5,7 @@ import AppContext from '../context/AppContext'
 
 export const Home = () => {
     const { userInfo, url, show } = useContext(AppContext)
+    const [change, setChange] = useState(false)
     const followingPostsExample = [{
         userId: 0,
         posts: []
@@ -45,7 +46,7 @@ export const Home = () => {
                         })
                 )
             });
-    }, [userInfo, url, show])
+    }, [show, change, userInfo])
 
     return (
         <div className='background-div homepage-div'>
@@ -60,7 +61,7 @@ export const Home = () => {
                             return new Date(b.date) - new Date(a.date)
                         }).map(post => post ?
                             (<li>
-                                { console.log(userInfo.userId)} 
+                                {console.log(userInfo.userId)}
                                 <Post
                                     username={post.username}
                                     pfp={post.pfp}
@@ -70,7 +71,10 @@ export const Home = () => {
                                     comments={post.comments ? post.comments : null}
                                     date={post.date}
                                     likedBy={post.likedBy}
-                                    description={post.description} />
+                                    description={post.description}
+                                    setChange={setChange}
+                                    change={change}
+                                />
                             </li>) :
                             <></>
                         )

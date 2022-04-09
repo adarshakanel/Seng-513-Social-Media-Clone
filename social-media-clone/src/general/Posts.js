@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useContext } from 'react'
 import { Card, FormControl } from 'react-bootstrap'
 import './../css/Posts.css'
 import Comment from './Comment'
@@ -7,15 +7,17 @@ import AppContext from '../context/AppContext'
 
 
 export const Posts = (props) => {
-
+    const { userInfo } = useContext(AppContext)
     const [commentInput, setCommentInput] = useState('');
     let commentUrl = 'http://localhost:5000/comment/'
 
-    const postComment = (e) => {
+    const postComment = async (e) => {
         e.preventDefault();
         if (commentInput != '') {
-            makeComment(props.postId, date, commentInput);
+            await makeComment(props.postId, date, commentInput);
             setCommentInput('');
+            props.setChange(!props.change)
+
         }
     }
 
@@ -25,7 +27,7 @@ export const Posts = (props) => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ description: comment, date })
+            body: JSON.stringify({ description: comment, date, userName: userInfo.fullName, pfp: userInfo.pfp })
         }
         await fetch(commentUrl + `${postId}`, requestOptions)
             .then(response =>
@@ -93,10 +95,10 @@ export const Posts = (props) => {
                                     return new Date(a.date) - new Date(b.date)
                                 }).map(comment => comment ?
                                     (
-                                        <Comment 
-                                            userId = {comment._id}
-                                            description = {comment.description}
-                                            date = {comment.date}
+                                        <Comment
+                                            userName={comment.userName}
+                                            description={comment.description}
+                                            date={comment.date}
                                         />
                                     ) : <></>
                                 )
