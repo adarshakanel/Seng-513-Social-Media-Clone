@@ -20,8 +20,8 @@ function AllRoutes() {
                 <Route path={"/"} exact element={<Login />} />
                 <Route path={"/signup"} exact element={<SignUp />} />
                 <Route path={"/forgot"} exact element={<ForgotPassword />} />
-                <Route path="/register" element={<Register/>}></Route>
-                <Route path="/login" element={<LoginTwo/>}></Route>
+                <Route path="/registerTwo" element={<Register/>}></Route>
+                <Route path="/loginTwo" element={<LoginTwo/>}></Route>
                 <Route path="/chat" element={<Chat/>}></Route>
 
                 <Route path={"/user/*"} exact

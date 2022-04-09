@@ -100,7 +100,7 @@ alignItems: "center"}}>
     border: "3px solid rgba(0,0,0,.4)",
     cursor: "pointer"}} type="submit">Login</button>
         <span>Don't have an account? <Link style={{color: "blue",
-      fontWeight: "bold"}}to="/register">Register</Link></span>
+      fontWeight: "bold"}}to="/registerTwo">Register</Link></span>
       </form>
     </div>
     <ToastContainer></ToastContainer>

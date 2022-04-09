@@ -116,7 +116,7 @@ alignItems: "center"}}>
     border: "3px solid rgba(0,0,0,.4)",
     cursor: "pointer"}} type="submit">Create User</button>
         <span>Already have an account? <Link style={{color: "blue",
-      fontWeight: "bold"}} to="/login">Login</Link></span>
+      fontWeight: "bold"}} to="/loginTwo">Login</Link></span>
       </form>
     </div>
     <ToastContainer></ToastContainer>

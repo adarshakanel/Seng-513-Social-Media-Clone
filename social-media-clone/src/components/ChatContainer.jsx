@@ -9,7 +9,7 @@ function ChatContainer({currentChat, currentUser, socket}) {
   const goto = useNavigate();
     const handleClick = async () =>  {
         localStorage.clear();
-        goto("/login")
+        goto("/loginTwo")
     }   
     console.log(currentChat);
     const [messages, setMessages] = useState([])
