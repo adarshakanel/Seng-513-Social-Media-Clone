@@ -1,5 +1,6 @@
 const express = require("express");
-const Post = require("../schema/Post")
+const Post = require("../schema/Post");
+const { findById } = require("../schema/User");
 const User = require("../schema/User")
 require('dotenv').config();
 
@@ -64,8 +65,13 @@ module.exports.unlikePost = async (req, res, next) => {
     const { id } = req.params
     const postId = req.body.id
     if (id && postId) {
-        await Post.findByIdAndUpdate({ "_id": postId }, { $pull: { likedBy: id } })
-        res.status(200).send("post has been unliked")
+        try {
+            await Post.findByIdAndUpdate({ "_id": postId }, { $pull: { likedBy: id } })
+            res.status(200).send("post has been unliked")
+        } catch (err) {
+            res.status(400).send(err)
+        }
+
     } else {
         res.status(400).send("information incorrect")
     }
