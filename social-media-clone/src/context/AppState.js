@@ -12,7 +12,6 @@ const AppState = (props) => {
 
     let url = 'http://localhost:5000/user/'
     let postUrl = 'http://localhost:5000/post/'
-
     const [show, setShow] = useState(false);
     const [loggedIn, isLoggedIn] = useState(false)
     const [userInfo, setUserInfo] = useState(userInformation)

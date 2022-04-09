@@ -4,13 +4,13 @@ const Post = require("../schema/Post")
 const User = require("../schema/User")
 
 module.exports.postComment = async (req, res, next) => {
-    const { description, date } = req.body
+    const { description, date, userName, pfp } = req.body
     const postId = req.params.id
     // console.log(description, id, date)
     if (description && date) {
         const user = await User.find({ posts: postId })
         const id = user._id
-        const comment = await new Comment({ description, id, date })
+        const comment = await new Comment({ description, id, date, userName, pfp })
         await comment.save(async function (err, user) {
             if (err) { return next(err) }
             else {

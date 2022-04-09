@@ -5,9 +5,13 @@ const CommentSchema = new Schema({
     description: {
         type: String
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
+    userName: {
+        type: String,
+        required: true
+    },
+    pfp: {
+        type: String,
+        required: true
     },
     date: {
         type: String,

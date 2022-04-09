@@ -83,7 +83,7 @@
   height: 100%;
 }
 
-.commentForm > button {
+.comment-post-btn {
   background: none;
   border: none;
   color: #0095f6;
@@ -133,4 +133,9 @@ p.first-comment {
   margin-top: 0.7em;
   justify-content: space-between;
   height: 2em;
+}
+
+.scrollable-comments {
+  max-height: 8rem;
+  overflow-y: scroll;
 }

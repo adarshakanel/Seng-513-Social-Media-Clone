@@ -8,14 +8,14 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Button, Modal, FormControl } from 'react-bootstrap'
 import AppContext from '../context/AppContext';
 import Dropzone from "../Dropzone/Dropzone"
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 export const MakePost = () => {
     // const [show, setShow] = useState(false);
     const { postUrl, userInfo, url, show, setShow } = useContext(AppContext)
     const [file, setFile] = useState('');
     const [description, setDescription] = useState('');
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
 
     const fileFromDrop = (fileData) => {
@@ -24,13 +24,12 @@ export const MakePost = () => {
 
     // https://medium.com/geekculture/how-to-upload-images-to-cloudinary-with-a-react-app-f0dcc357999c
     // fetch to this url to post image
-    const handleClose = (e) => {
+    const handleClose = async (e) => {
         e.preventDefault();
         if (file != '' && description != '') {
-            handlePost();
-            navigate(`/user/`, { replace: true })
+            await handlePost();
+            // navigate(`/user/`, { replace: true })
 
-            setShow(false);
         }
         else {
             alert("Upload an image and fill in a description")
@@ -69,18 +68,20 @@ export const MakePost = () => {
                 response.ok ?
                     console.log("post has been made") : null
             )
+        setShow(false);
+
     }
 
     const dropRef = useRef();
 
-    const handlePost = () => {
+    const handlePost = async () => {
         var d = new FormData();
 
         d.append('upload_preset', 'ofbqqtfw');
         d.append('file', file);
         // console.log(file);
         d.append('cloud_name', 'dmieyzfqg');
-        fetch(`https://api.cloudinary.com/v1_1/dmieyzfqg/image/upload`, {
+        await fetch(`https://api.cloudinary.com/v1_1/dmieyzfqg/image/upload`, {
             method: "POST",
             body: d
         })
