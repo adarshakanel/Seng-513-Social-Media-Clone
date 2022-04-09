@@ -52,7 +52,7 @@ export const SignUp = () => {
                 <form className='sign-up-login-form'>
                     <div className='form-fields'>
                         <input type="email" placeholder="Email" className='form-field' ref={email}></input>
-                        <input type="text" placeholder="Full Name" className='form-field' ref={fullname}></input>
+                        {/* <input type="text" placeholder="Full Name" className='form-field' ref={fullname}></input> */}
                         <input type="text" placeholder="Username" className='form-field' ref={username}></input>
                         <input type="password" placeholder="Password" className='form-field' ref={password}></input>
                     </div>
