@@ -16,7 +16,7 @@ function Contacts({contacts, currentUser, changeChat, id}) {
         useEffect(() => {
             axios.get("http://localhost:5000/user/message/" + userInfo.userId).then(
         (response)=>{
-          setFriends(response.data.following);
+          setFriends(response.data.followers);
           console.log(friends)
           console.log(id)
           if (!id.includes("localhost:3000/user/chat")){
@@ -67,6 +67,7 @@ function Contacts({contacts, currentUser, changeChat, id}) {
                             if (true)
                             console.log(contact)
                             console.log(userInfo.id)
+                            console.log(friends)
                                 return(
                                     <div style={{backgroundColor: "#ffffffff",
                                     height: "5rem",
