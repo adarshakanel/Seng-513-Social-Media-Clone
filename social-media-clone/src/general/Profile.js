@@ -40,9 +40,16 @@ export const Profile = () => {
             });
     }, [name])
 
-    function messageButtonClicked(e) {
+    async function messageButtonClicked(e) {
         e.preventDefault()
-        navigate(`/user/chat/${person.id}`, { replace: true })
+
+        fetch(url + `message/${name}`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: userInfo.userId })
+            })
+            .then(response => response.ok ? navigate(`/user/chat`, { replace: true }) : null);
     }
 
     function updateUser(e) {

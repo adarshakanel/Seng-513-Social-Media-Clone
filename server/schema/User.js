@@ -41,6 +41,13 @@ const UserSchema = new Schema({
     },
     pfp: {
         type: String,
+    },
+    chat: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }],
+        default: () => { return []; }
     }
 })
 

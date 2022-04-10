@@ -183,3 +183,35 @@ module.exports.changePassword = async (req, res, next) => {
         res.status(500).send(err)
     }
 }
+
+module.exports.messageUser = async (req, res, next) => {
+    try {
+        const messagingId = req.params.id;
+        const yourId = req.body.id;
+        console.log(messagingId, yourId)
+        if (yourId && messagingId) {
+            await User.findByIdAndUpdate(yourId, { $push: { chat: messagingId } })
+            await User.findByIdAndUpdate(messagingId, { $push: { chat: yourId } })
+            res.status(200).send("user message!")
+        } else {
+            res.status(400).send("incorrect info")
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+module.exports.getMessagers = async (req, res, next) => {
+    try {
+        // const messagingId = req.params.id;
+        const yourId = req.params.id;
+        // console.log(messagingId, yourId)
+        if (yourId) {
+            const user = await User.findById(yourId)
+            res.status(200).send(user.chat)
+        } else {
+            res.status(400).send("incorrect info")
+        }
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}

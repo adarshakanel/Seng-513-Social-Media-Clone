@@ -35,10 +35,19 @@ router.route("/following/:id")
         UserController.getFollowing(req, res, next)
     })
 
+router.route("/message/:id")
+    .get(async (req, res, next) => {
+        UserController.getMessagers(req, res, next)
+    })
+    .post(async (req, res, next) => {
+        UserController.messageUser(req, res, next)
+    })
+
 router.route("/findId")
     .post(async (req, res, next) => {
         UserController.getUserIDFromEmail(req, res, next)
     })
+
 router.route("/findIdFromUsername")
     .post(async (req, res, next) => {
         UserController.getUserIDFromUsername(req, res, next)
