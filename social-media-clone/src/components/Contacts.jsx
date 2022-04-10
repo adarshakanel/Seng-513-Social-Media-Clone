@@ -16,7 +16,7 @@ function Contacts({contacts, currentUser, changeChat, id}) {
         useEffect(() => {
             axios.get("http://localhost:5000/user/message/" + userInfo.userId).then(
         (response)=>{
-          setFriends(response.data);
+          setFriends(response.data.following);
           console.log(friends)
           console.log(id)
           if (!id.includes("localhost:3000/user/chat")){
@@ -63,10 +63,10 @@ function Contacts({contacts, currentUser, changeChat, id}) {
     overflow: "auto",
     gap: "0.8rem"}}>
                     {
-                        friends.map((contact,index)=>{
+                        contacts.map((contact,index)=>{
                             if (true)
                             console.log(contact)
-                            console.log(userInfo.userId)
+                            console.log(userInfo.id)
                                 return(
                                     <div style={{backgroundColor: "#ffffffff",
                                     height: "5rem",
@@ -77,7 +77,7 @@ function Contacts({contacts, currentUser, changeChat, id}) {
                                     display: "flex",
                                     alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
                                         <div >
-                                            <h3>{contact}</h3> </div>
+                                            <h3>{contact.username}</h3> </div>
                                     </div>
                                 )
                         })
