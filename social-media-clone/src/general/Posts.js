@@ -9,6 +9,7 @@ import AppContext from '../context/AppContext'
 export const Posts = (props) => {
     const { userInfo } = useContext(AppContext)
     const [commentInput, setCommentInput] = useState('');
+
     let commentUrl = 'http://localhost:5000/comment/'
     let likeUrl = 'http://localhost:5000/post/';
     let unlikeUrl = 'http://localhost:5000/post/unlike/';
@@ -39,44 +40,48 @@ export const Posts = (props) => {
 
     const btn = useRef(null);
 
-    const likePost = () => {
-        const requestOptions ={
+    const likePost = async () => {
+        const requestOptions = {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({id: props.postId})
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: props.postId })
         }
-        fetch(likeUrl + `${userInfo.userId}`, requestOptions)
+        await fetch(likeUrl + `${userInfo.userId}`, requestOptions)
             .then(response =>
-                    response.ok ?
-                        console.log("Liked"): null)
+                response.ok ?
+                    console.log("Liked") : null)
+        props.setChange(!props.change)
+
     }
 
-    const unlikePost = () => {
-        const requestOptions ={
+    const unlikePost = async () => {
+        const requestOptions = {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({id: props.postId})
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: props.postId })
         }
-        fetch(unlikeUrl + `${userInfo.userId}`, requestOptions)
+        await fetch(unlikeUrl + `${userInfo.userId}`, requestOptions)
             .then(response =>
-                    response.ok ?
-                        console.log("Unliked"): null)
+                response.ok ?
+                    console.log("Unliked") : null)
+        props.setChange(!props.change)
+
     }
 
     const likeStatus = () => {
-        if(props.likedBy == null)
+        if (props.likedBy == null)
             return 'unliked'
-        for(const like of props.likedBy){
-            if(like._id === userInfo.userId)
+        for (const like of props.likedBy) {
+            if (like._id === userInfo.userId)
                 return 'liked'
         }
         return 'unliked'
     }
 
     const likeCount = () => {
-        if(props.likedBy == null)
+        if (props.likedBy == null)
             return '0'
-        else{
+        else {
             return props.likedBy.length;
         }
     }
@@ -101,19 +106,19 @@ export const Posts = (props) => {
                             <p className='post-caption'><span className='footer-username' >{props.username} </span>{props.description}</p>
                         </div>
                         <div className='like-area'>
-                        <div ref={btn} id='likeButton' className={likeStatus()} onClick={() => {
-                            if (btn.current.classList.contains("liked")) {
-                                btn.current.classList.remove('liked');
-                                btn.current.classList.add('unliked');
-                                unlikePost();
-                            }
-                            else {
-                                btn.current.classList.remove('unliked');
-                                btn.current.classList.add('liked');
-                                likePost();
-                            }
-                        }}></div>
-                        <div classNumber='number-likes'>{likeCount()}</div>
+                            <div ref={btn} id='likeButton' className={likeStatus()} onClick={() => {
+                                if (btn.current.classList.contains("liked")) {
+                                    btn.current.classList.remove('liked');
+                                    btn.current.classList.add('unliked');
+                                    unlikePost();
+                                }
+                                else {
+                                    btn.current.classList.remove('unliked');
+                                    btn.current.classList.add('liked');
+                                    likePost();
+                                }
+                            }}></div>
+                            <div classNumber='number-likes'>{likeCount()}</div>
                         </div>
                     </div>
 
