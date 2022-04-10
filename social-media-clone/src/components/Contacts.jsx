@@ -11,18 +11,21 @@ function Contacts({contacts, currentUser, changeChat, id}) {
     const {userInfo } = useContext(AppContext)
     const [friends, setFriends] = useState([])
     const [isTrue, setisTrue] = useState(false)
-    
-
+    const rest = contacts.filter(item =>{
+        return item._id === id;
+     })
+     
         useEffect(() => {
             axios.get("http://localhost:5000/user/message/" + userInfo.userId).then(
         (response)=>{
           setFriends(response.data.following);
           console.log(friends)
-          console.log(id)
-          if (!id.includes("localhost:3000/user/chat")){
+          console.log("this is the id" + id)
+          if (id === ("localhost:3000/user/chat")){
               setisTrue(false)
           } else{
             setisTrue(true)
+            
         }
           console.log("setisTrue: " + isTrue)
           
