@@ -16,11 +16,11 @@ function Contacts({contacts, currentUser, changeChat, id}) {
         useEffect(() => {
             axios.get("http://localhost:5000/user/message/" + userInfo.userId).then(
         (response)=>{
-          setFriends(response.data.followers);
+          setFriends(response.data.following);
           console.log(friends)
           console.log(id)
           if (!id.includes("localhost:3000/user/chat")){
-              setisTrue(true)
+              setisTrue(false)
           } else{
             setisTrue(true)
         }
@@ -65,22 +65,30 @@ function Contacts({contacts, currentUser, changeChat, id}) {
                     {
                         contacts.map((contact,index)=>{
                             if (true)
-                            console.log(contact)
+                            console.log(contact._id)
+                            console.log(contact._id)
+                            console.log(contact._id)
+                            console.log(contact._id)
+
+                            console.log(userInfo.id)
+                            console.log(userInfo.id)
                             console.log(userInfo.id)
                             console.log(friends)
-                                return(
-                                    <div style={{backgroundColor: "#ffffffff",
-                                    height: "5rem",
-                                    cursor: "pointer",
-                                    width: "85%",
-                                    borderRadius: "1rem",
-                                    padding: "1rem",
-                                    display: "flex",
-                                    alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
-                                        <div >
-                                            <h3>{contact.username}</h3> </div>
-                                    </div>
-                                )
+                                if(friends.includes(contact._id)){
+                                    return(
+                                        <div style={{backgroundColor: "#ffffffff",
+                                        height: "5rem",
+                                        cursor: "pointer",
+                                        width: "85%",
+                                        borderRadius: "1rem",
+                                        padding: "1rem",
+                                        display: "flex",
+                                        alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
+                                            <div >
+                                                <h3>{contact.username}</h3> </div>
+                                        </div>
+                                    )
+                                }
                         })
                     }
                 </div>
