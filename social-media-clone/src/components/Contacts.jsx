@@ -1,11 +1,22 @@
 import React, { useEffect, useContext } from 'react'
 import {useState } from 'react'
 import AppContext from '../context/AppContext';
+import axios from "axios";
+
 
 function Contacts({contacts, currentUser, changeChat, id}) {
+    
     const [username, setUsername] = useState(undefined);
     const [chat, setChat] = useState(undefined);
     const {userInfo } = useContext(AppContext)
+    const [friends, setFriends] = useState()
+
+    axios.get("http://localhost:5000/user/message/" + userInfo.userId).then(
+        (response)=>{
+          setFriends(response.data);
+          
+    })
+
         useEffect(() => {
         if (currentUser) {
             if (id === "6252209d1333e8d67e9b0cca"){
