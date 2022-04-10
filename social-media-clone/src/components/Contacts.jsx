@@ -65,35 +65,74 @@ function Contacts({contacts, currentUser, changeChat, id}) {
     alignItems: "center",
     overflow: "auto",
     gap: "0.8rem"}}>
-                    {
-                        contacts.map((contact,index)=>{
-                            if (true)
-                            console.log(contact._id)
-                            console.log(contact._id)
-                            console.log(contact._id)
-                            console.log(contact._id)
-
-                            console.log(userInfo.id)
-                            console.log(userInfo.id)
-                            console.log(userInfo.id)
-                            console.log(friends)
-                                if(friends.includes(contact._id)){
-                                    return(
-                                        <div style={{backgroundColor: "#ffffffff",
-                                        height: "5rem",
-                                        cursor: "pointer",
-                                        width: "85%",
-                                        borderRadius: "1rem",
-                                        padding: "1rem",
-                                        display: "flex",
-                                        alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
-                                            <div >
-                                                <h3>{contact.username}</h3> </div>
-                                        </div>
-                                    )
-                                }
-                        })
-                    }
+                    
+                    <div>
+                    {(() => {
+                        if (id === ("localhost:3000/user/chat")) {
+                        return (
+                            contacts.map((contact,index)=>{
+                                if (true)
+                                console.log(contact._id)
+                                console.log(contact._id)
+                                console.log(contact._id)
+                                console.log(contact._id)
+    
+                                console.log(userInfo.id)
+                                console.log(userInfo.id)
+                                console.log(userInfo.id)
+                                console.log(friends)
+                                    if(friends.includes(contact._id)){
+                                        return(
+                                            <div style={{backgroundColor: "#ffffffff",
+                                            height: "5rem",
+                                            cursor: "pointer",
+                                            width: "100%",
+                                            marginLeft: "-50%",
+                                            borderRadius: "1rem",
+                                            padding: "1rem",
+                                            display: "flex",
+                                            alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
+                                                <div >
+                                                    <h3>{contact.username}</h3> </div>
+                                            </div>
+                                        )
+                                    }
+                            })
+                        )
+                        } else {
+                        return (
+                            rest.map((contact,index)=>{
+                                if (true)
+                                console.log(contact._id)
+                                console.log(contact._id)
+                                console.log(contact._id)
+                                console.log(contact._id)
+    
+                                console.log(userInfo.id)
+                                console.log(userInfo.id)
+                                console.log(userInfo.id)
+                                console.log(friends)
+                                    if(friends.includes(contact._id)){
+                                        return(
+                                            <div style={{backgroundColor: "#ffffffff",
+                                            height: "5rem",
+                                            cursor: "pointer",
+                                            width: "100%",
+                                            marginLeft: "-50%",
+                                            borderRadius: "1rem",
+                                            padding: "1rem",
+                                            display: "flex",
+                                            alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
+                                                <div >
+                                                    <h3>{contact.username}</h3> </div>
+                                            </div>
+                                        )
+                                    }
+                            })
+                        )
+                        }
+                    })()}
+                    </div>
                 </div>
             </div>
         )
