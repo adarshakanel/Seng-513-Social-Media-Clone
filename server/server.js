@@ -57,6 +57,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("send", (data) => {
+      console.log(data)
         const toSocket = users.get(data.to);
         if (toSocket) {
           socket.to(toSocket).emit("receive", data.message);

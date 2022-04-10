@@ -13,11 +13,13 @@ function Chat() {
     const [contactList, setContactList] = useState([]);
     const [username, setUsername] = useState(undefined);
     const [chat, setChat] = useState(undefined);
-  
-    
+    const url = window.location.href.slice(-24);  
+    console.log(url)
+
+
     async function fetchDataTwo() {
         if(!localStorage.getItem('chat-app-user')){
-            goto("/login");
+            goto("/loginTwo");
         } else  {
             setUsername(await JSON.parse(localStorage.getItem('chat-app-user')));
         }
@@ -62,7 +64,7 @@ backgroundColor: "white"}}>
   width: "100vw",
   display: "grid",
   gridTemplateColumns: "20% 80%"}} >
-            <Contacts contacts={contactList} currentUser={username} changeChat={handleChatChange}>
+            <Contacts contacts={contactList} currentUser={username} changeChat={handleChatChange} id={url}>
             </Contacts>
             <ChatContainer currentChat={chat} currentUser={username} socket={socket}/>
         </div>

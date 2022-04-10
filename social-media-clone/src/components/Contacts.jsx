@@ -1,11 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import {useState } from 'react'
-function Contacts({contacts, currentUser, changeChat}) {
+import AppContext from '../context/AppContext';
+
+function Contacts({contacts, currentUser, changeChat, id}) {
     const [username, setUsername] = useState(undefined);
     const [chat, setChat] = useState(undefined);
-
-    useEffect(() => {
+    const {userInfo } = useContext(AppContext)
+        useEffect(() => {
         if (currentUser) {
+            if (id === "6252209d1333e8d67e9b0cca"){
+                currentUser._id = "625220a91333e8d67e9b0cd0"
+            } else {
+                currentUser._id = "6252209d1333e8d67e9b0cca"
+            }
             setUsername(currentUser.username)
         }
     }, [currentUser]);
@@ -13,7 +20,17 @@ function Contacts({contacts, currentUser, changeChat}) {
     const changeCurrentChat = (index, contact) => {
         setChat(index);
         changeChat(contact)
+        console.log(contact);
+        console.log(currentUser)
+        //console.log(userInfo)
+
     }
+    
+    //if(id !== "6252209d1333e8d67e9b0cca"){
+     //   currentUser._id = "625220a91333e8d67e9b0cd0"
+    //} else{
+    //    currentUser._id = "6252209d1333e8d67e9b0cca"
+    //}
 
   return (
     <>
@@ -35,19 +52,20 @@ function Contacts({contacts, currentUser, changeChat}) {
     gap: "0.8rem"}}>
                     {
                         contacts.map((contact,index)=>{
-                            return(
-                                <div style={{backgroundColor: "#ffffffff",
-                                  height: "5rem",
-                                  cursor: "pointer",
-                                  width: "85%",
-                                  borderRadius: "1rem",
-                                  padding: "1rem",
-                                  display: "flex",
-                                  alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
-                                    <div >
-                                        <h3>{contact.username}</h3> </div>
-                                </div>
-                            )
+                            if (id !== undefined && contact._id === id && contact._id !== currentUser._id)
+                                return(
+                                    <div style={{backgroundColor: "#ffffffff",
+                                    height: "5rem",
+                                    cursor: "pointer",
+                                    width: "85%",
+                                    borderRadius: "1rem",
+                                    padding: "1rem",
+                                    display: "flex",
+                                    alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
+                                        <div >
+                                            <h3>{contact.username}</h3> </div>
+                                    </div>
+                                )
                         })
                     }
                 </div>

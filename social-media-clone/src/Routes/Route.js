@@ -29,6 +29,7 @@ function AllRoutes() {
                         <Routes>
                             <Route path={`/`} exact element={<Home />} />
                             <Route path={`/:name`} exact element={<Profile />} />
+                            <Route path={`/chat/*`} exact element={<Chat />} />
                         </Routes>
                     </AuthRoute>}>
                 </Route>
