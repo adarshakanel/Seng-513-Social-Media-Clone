@@ -38,15 +38,11 @@
 #likeButton {
   color: white;
   display: flex;
-  float: left;
-  margin-right: 2%;
-  margin-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
   cursor: pointer;
   transform: perspective(100px) translateZ(0px);
   transition: transform 100ms linear;
   transition: all 0.15s;
+  margin: 0 1em;
 }
 
 #likeButton:hover {
@@ -88,6 +84,7 @@
   border: none;
   color: #0095f6;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .commentInput {
@@ -133,9 +130,16 @@ p.first-comment {
   margin-top: 0.7em;
   justify-content: space-between;
   height: 2em;
+  
 }
 
 .scrollable-comments {
   max-height: 8rem;
   overflow-y: auto;
+}
+
+.like-area{
+  display: flex;
+  float: left;
+  margin-left: 2%;
 }

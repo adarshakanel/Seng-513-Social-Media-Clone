@@ -73,6 +73,14 @@ export const Posts = (props) => {
         return 'unliked'
     }
 
+    const likeCount = () => {
+        if(props.likedBy == null)
+            return '0'
+        else{
+            return props.likedBy.length;
+        }
+    }
+
     return (
         <div id='Post-Section'>
             <Card style={{ maxWidth: '100%', maxHeight: 'auto', width: 'max-content', height: 'auto' }}>
@@ -92,6 +100,7 @@ export const Posts = (props) => {
                         <div className='post-text'>
                             <p className='post-caption'><span className='footer-username' >{props.username} </span>{props.description}</p>
                         </div>
+                        <div className='like-area'>
                         <div ref={btn} id='likeButton' className={likeStatus()} onClick={() => {
                             if (btn.current.classList.contains("liked")) {
                                 btn.current.classList.remove('liked');
@@ -104,7 +113,8 @@ export const Posts = (props) => {
                                 likePost();
                             }
                         }}></div>
-
+                        <div classNumber='number-likes'>{likeCount()}</div>
+                        </div>
                     </div>
 
                     <div className='scrollable-comments'>
