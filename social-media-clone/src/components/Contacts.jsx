@@ -10,7 +10,7 @@ function Contacts({contacts, currentUser, changeChat, id}) {
     const [chat, setChat] = useState(undefined);
     const {userInfo } = useContext(AppContext)
     const [friends, setFriends] = useState([])
-
+    const [isTrue, setisTrue] = useState(false)
     
 
         useEffect(() => {
@@ -18,6 +18,13 @@ function Contacts({contacts, currentUser, changeChat, id}) {
         (response)=>{
           setFriends(response.data);
           console.log(friends)
+          console.log(id)
+          if (!id.includes("localhost:3000/user/chat")){
+              setisTrue(true)
+          } else{
+            setisTrue(true)
+        }
+          console.log("setisTrue: " + isTrue)
           
     })
         if (currentUser) {
@@ -58,8 +65,8 @@ function Contacts({contacts, currentUser, changeChat, id}) {
                     {
                         friends.map((contact,index)=>{
                             if (true)
-                            console.log(currentUser._id)
                             console.log(contact)
+                            console.log(userInfo.userId)
                                 return(
                                     <div style={{backgroundColor: "#ffffffff",
                                     height: "5rem",

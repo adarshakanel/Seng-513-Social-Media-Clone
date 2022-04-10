@@ -207,7 +207,7 @@ module.exports.getMessagers = async (req, res, next) => {
         // console.log(messagingId, yourId)
         if (yourId) {
             const user = await User.findById(yourId)
-            res.status(200).send(user.chat)
+            res.status(200).send(user.following)
         } else {
             res.status(400).send("incorrect info")
         }
