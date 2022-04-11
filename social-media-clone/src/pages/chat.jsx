@@ -61,10 +61,10 @@ justifyContent: "center",
 alignItems: "center",
 backgroundColor: "white"}}>
         <div style={{height: "100vh",
-  width: "100vw",
+  width: "80vw",
   display: "grid",
   gridTemplateColumns: "20% 80%"}} >
-            <Contacts contacts={contactList} currentUser={username} changeChat={handleChatChange} id={url}>
+            <Contacts contacts={contactList} currentUser={username} changeChat={handleChatChange} id={url}  style={{width: '100%'}}>
             </Contacts>
             <ChatContainer currentChat={chat} currentUser={username} socket={socket}/>
         </div>

@@ -60,9 +60,10 @@ function Contacts({contacts, currentUser, changeChat, id}) {
     justifyContent: "center"}}>
                     <h3>CONTACTS</h3>
                 </div>
-                <div style={{display: "flex",
+                      <div style={{
+                          display: "flex",
+    width:'100%',
     flexDirection: "column",
-    alignItems: "center",
     overflow: "auto",
     gap: "0.8rem"}}>
                     
@@ -83,15 +84,17 @@ function Contacts({contacts, currentUser, changeChat, id}) {
                                 console.log(friends)
                                     if(friends.includes(contact._id)){
                                         return(
-                                            <div style={{backgroundColor: "#ffffffff",
+                                            <div className='border' style={{backgroundColor: "#ffffffff",
                                             height: "5rem",
                                             cursor: "pointer",
                                             width: "100%",
-                                            marginLeft: "-50%",
-                                            borderRadius: "1rem",
+                                            // marginLeft: "-50%",
+                                                borderRadius: "1rem",
                                             padding: "1rem",
                                             display: "flex",
-                                            alignItems: "center"}}  onClick={()=>changeCurrentChat(index, contact)}>
+                                                alignItems: "center",
+                                                justifyContent:'center'
+                                            }} onClick={() => changeCurrentChat(index, contact)}>
                                                 <div >
                                                     <h3>{contact.username}</h3> </div>
                                             </div>

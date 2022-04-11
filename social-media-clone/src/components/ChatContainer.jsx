@@ -124,7 +124,7 @@ function ChatContainer({currentChat, currentUser, socket}) {
         </div>
         <div  style={{display: "grid",
     alignItems: "center",
-    gridTemplateColumns: "95% 5%",
+    gridTemplateColumns: "100%",
     backgroundColor: "white",
     paddingLeft: "1rem",
     paddingRight: "1rem"}}>
