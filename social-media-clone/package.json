@@ -15,6 +15,9 @@
     "react-file-dropzone": "^0.4.1",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
+    "react-toastify": "^8.2.0",
+    "socket.io-client": "^4.4.1",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
