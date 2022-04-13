@@ -49,7 +49,7 @@ export const Profile = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id: userInfo.userId })
             })
-            .then(response => response.ok ? navigate(`/user/chat/${person.id}`, { replace: true }) : null);
+            .then(response => response.ok ? navigate(`/user/chat`, { replace: true }) : null);
     }
 
     function updateUser(e) {
