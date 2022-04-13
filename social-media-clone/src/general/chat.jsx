@@ -3,8 +3,8 @@ import {useState, useEffect, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import { allusers, host } from "../utils/APIRoutes";
-import Contacts from "../components/Contacts";
-import ChatContainer from "../components/ChatContainer";
+import Contacts from "./Contacts";
+import ChatContainer from "./ChatContainer";
 import {io} from "socket.io-client"
 
 function Chat() {

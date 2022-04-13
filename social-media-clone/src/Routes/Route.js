@@ -5,11 +5,11 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import AuthRoute from "./AuthRoute";
 import Home from "../general/Home";
-import Chat from "../pages/chat"
+import Chat from "../general/chat"
 import { Profile } from "../general/Profile";
 import { ForgotPassword } from "../general/ForgotPassword";
-import Register from "../pages/Register"
-import LoginTwo from "../pages/login"
+import Register from "../general/Register"
+import LoginTwo from "../general/logintwo"
 function AllRoutes() {
     const { loggedIn } = useContext(AppContext)
     // console.log(loggedIn)
